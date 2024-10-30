@@ -38,9 +38,9 @@ const Apollo = () => {
   
         <div className={`md:hidden bg-black ${isOpen ? 'block' : 'hidden'}`}>
           <div className="px-4 py-2 space-y-2">
-            <a href="/" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-white">Home</a>
-            <a href="#" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-white">About</a>
-            <a href="/GodList" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-white">GreekMyth Explain</a>
+            <a href="/" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">Home</a>
+            <a href="#" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">About</a>
+            <a href="/GodList" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">GreekMyth Explain</a>
           </div>
         </div>
       </nav>

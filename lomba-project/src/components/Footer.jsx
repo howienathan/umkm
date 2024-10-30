@@ -11,9 +11,7 @@ const Footer = () => {
 </nav>
 
 <div className="flex justify-center space-x-5 pb-5">
-    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className='hover:scale-105 duration-300'>
-        <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
-    </a>
+    
     <a href="https://www.tiktok.com/@nathanwleowle" target="_blank" rel="noopener noreferrer" className='hover:scale-105 duration-300'>
         <img src="https://img.icons8.com/?size=30&id=118638&format=png&color=000000" />
     </a>
