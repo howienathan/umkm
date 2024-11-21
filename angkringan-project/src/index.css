@@ -4,8 +4,16 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #fff;
-    background-color: #ffffff;
+    background-color: #150000;
   }
 
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none; /* untuk Firefox */
+  -ms-overflow-style: none;  /* untuk Internet Explorer dan Edge */
 }

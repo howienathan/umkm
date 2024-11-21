@@ -40,3 +40,11 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: #150000; /* Ubah ke warna atau gambar sesuai kebutuhan */
+  background-image: url('/path/to/image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
