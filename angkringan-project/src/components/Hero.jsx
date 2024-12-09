@@ -13,7 +13,7 @@ import Text from './Hightlight/Text'
 const Hero = () => {
   return (
     <section className='text-white pt-[5rem]'>
-<div className="bg-gradient-to-b from-[#ffffff42] bg-opacity-20 bg-blend-saturation to-[#150000] text-white p-6 duration-300 rounded-xl text-start shadow-lg max-w-7xl mx-auto mt-10">
+<div id='Home' className="bg-gradient-to-b from-[#ffffff42] bg-opacity-20 bg-blend-saturation to-[#150000] text-white p-6 duration-300 rounded-xl text-start shadow-lg max-w-7xl mx-auto mt-10">
       <div className="grid md:grid-cols-2 gap-6 items-center ">
         <div className="grid grid-cols-2 gap-4">
           <img
@@ -43,9 +43,9 @@ const Hero = () => {
             menyambut Anda dengan suasana yang nyaman, pelayanan ramah, dan rasa
             yang tidak pernah mengecewakan.
           </p>
-          <button className="border border-yellow-500 text-yellow-400 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
+          <a href='/ContactForm' className="border border-yellow-500 text-yellow-400 duration-300 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
             Lihat Menu &rarr;
-          </button>
+          </a>
         </div>
 
       </div>
@@ -57,12 +57,12 @@ const Hero = () => {
     <h1 className='text-yellow-400 text-3xl font-poppins font-semibold'>Angkringan <b className='text-white font-AnakArsitek'>Pasadena?</b></h1>
     <p className='text-lg pt-5 font-jakarta'>Di Angkringan Pasadena, kami percaya bahwa makanan bukan hanya soal kenyang, tapi tentang menciptakan pengalaman yang menghubungkan orang. Setiap hidangan yang kami sajikan dipersiapkan dengan penuh cinta dan menggunakan bahan-bahan pilihan, dengan tujuan untuk memberikan rasa yang autentik dan menggugah selera. </p>
     </div>
-    <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 pt-[6rem]'>
-    <div className='bg-yellow-400 rounded-lg pb-4'>
+    <div className='grid grid-cols-1 justify-center  lg:grid-cols-3 gap-12 pt-[6rem]'>
+    <div className='bg-yellow-400  rounded-lg pb-4'>
         <img 
         src={uang}
          alt="uang"
-         className=' w-auto h-auto px-20 py-10 '
+         className=' px-20 py-10 '
           />
       <h2 className='text-xl font-bold font-poppins text-black'>Murah</h2>
         <p className='text-base text-center font-poppins font-medium text-black'>Nongkrong lebih hemat
@@ -72,7 +72,7 @@ const Hero = () => {
         <img 
         src={jempol}
          alt="uang"
-         className=' w-auto h-auto px-20 py-10 '
+         className='  px-20 py-10 '
           />
       <h2 className='text-xl font-bold font-poppins text-black  pt-8'>Ramah & Cepat</h2>
         <p className='text-base text-center font-poppins font-medium text-black'>Nongkrong lebih hemat
@@ -82,7 +82,7 @@ const Hero = () => {
         <img 
         src={berkualitas}
          alt="uang"
-         className=' w-auto h-auto pb-[1.5rem]'
+         className='  pb-[1.5rem]'
           />
       <h2 className='text-xl font-bold font-poppins text-black'>Murah</h2>
         <p className='text-base text-center font-poppins font-medium text-black'>Nongkrong lebih hemat

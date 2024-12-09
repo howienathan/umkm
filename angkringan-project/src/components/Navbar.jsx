@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo 2.png";
 
-const listItems = ["Home", "About", "Menu", "Contact"];
+const listItems = ["Home", "About", "Menu", "Contact", "Galery"];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,11 +51,17 @@ const Navbar = () => {
           <span className="block w-8 h-1 bg-yellow-400"></span>
         </div>
 
-        {/* Login Button */}
-        <button className="hidden md:block bg-gradient-to-r from-yellow-600 to-yellow-400 
-                py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105">
+        <div className="flex ">
+        <a className="hidden md:block bg-gradient-to-r from-yellow-600 to-yellow-400 
+                py-1 px-6 mr-4 rounded-3xl shadow-2xl text-white text-sm font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105">
           Login
-        </button>
+        </a>
+        <a className="hidden md:block bg-gradient-to-r from-yellow-600 to-yellow-400 
+                py-1 px-6 rounded-3xl shadow-2xl text-white text-sm font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105">
+          SignUp
+        </a>
+        </div>
+        
       </div>
 
       {/* Mobile Menu */}
@@ -74,12 +80,18 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <button
+          <a href=""
             className="bg-gradient-to-r from-yellow-600 to-yellow-400 
                 py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105"
           >
             Login
-          </button>
+          </a>
+          <a href=""
+            className="bg-gradient-to-r from-yellow-600 to-yellow-400 
+                py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105"
+          >
+            SignIn
+          </a>
         </div>
       )}
     </>
