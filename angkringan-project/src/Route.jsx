@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom"
 import App from './App'
-import ContactForm from './components/ContactForm'
+import ContactForm from '../src/components/ContactForm'
 
 const router = createBrowserRouter([
     {
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
             },
             
             {
-                path: "/ContactForm",
+                path: "/Contact",
                 element: <ContactForm/>,
             },
             

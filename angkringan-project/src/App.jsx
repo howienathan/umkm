@@ -9,7 +9,7 @@ import 'boxicons/css/boxicons.min.css';
 function App() {
 
   return (
-    <section className=''>
+    <section>
     <Navbar/>
     <Hero/>
     <Footer/>

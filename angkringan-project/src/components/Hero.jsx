@@ -12,7 +12,7 @@ import Text from './Hightlight/Text'
 
 const Hero = () => {
   return (
-    <section className='text-white pt-[5rem]'>
+    <section className='text-white pt-[5rem] px-[2rem]'>
 <div id='Home' className="bg-gradient-to-b from-[#ffffff42] bg-opacity-20 bg-blend-saturation to-[#150000] text-white p-6 duration-300 rounded-xl text-start shadow-lg max-w-7xl mx-auto mt-10">
       <div className="grid md:grid-cols-2 gap-6 items-center ">
         <div className="grid grid-cols-2 gap-4">
@@ -27,7 +27,7 @@ const Hero = () => {
             className="rounded-lg shadow-md"
           />
         </div>
-        <div id='HOme'>
+        <div id='Home'>
           <h1 className="text-yellow-400 text-4xl pb-[1rem] font-bold mb-4">
             Kenyang Hemat Bersama
             <br />
@@ -43,7 +43,7 @@ const Hero = () => {
             menyambut Anda dengan suasana yang nyaman, pelayanan ramah, dan rasa
             yang tidak pernah mengecewakan.
           </p>
-          <a href='/ContactForm' className="border border-yellow-500 text-yellow-400 duration-300 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
+          <a href='' className="border border-yellow-500 text-yellow-400 duration-300 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
             Lihat Menu &rarr;
           </a>
         </div>

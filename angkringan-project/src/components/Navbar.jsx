@@ -1,100 +1,92 @@
-import React, { useState } from "react";
-import logo from "../assets/logo 2.png";
-
-const listItems = ["Home", "About", "Menu", "Contact", "Galery"];
+import React, { useState, useEffect } from 'react';
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 1) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <>
-      <div
-        className="fixed border border-yellow-400 bg-black flex justify-between items-center gap-16 py-3 px-6 md:px-10 left-1/2 
-                translate-x-[-50%] top-[20px] rounded-full backdrop-blur-md bg-opacity-60
-              text-white shadow-[0px_0px_18px_3px_#f6e05e] z-20 w-[95%] md:w-auto"
-      >
-        <div className="text-start text-white flex items-center">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-8 h-8 mr-2" // Atur ukuran dan jarak logo
-          />
-          <span className="text-yellow-400 font-bold">Angkringan</span>{" "}
-          <b>Pasadena</b>
-        </div>
+    <nav
+      className={`fixed w-full ${
+        isScrolled ? 'shadow-[0px_13px_20px_4px_#f6e05e] ' : 'shadow-none'
+      } bg-[#150000] border-b border-yellow-400 transition-shadow duration-300`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <a href="#" className="text-white text-xl font-poppins font-bold">Angkringan<span className='text-yellow-400'>Pasadena</span></a>
+          </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-8 text-xl">
-          {listItems.map((item, idx) => (
-            <li
-              className={`relative group cursor-pointer ${
-                idx === 0 ? "font-semibold hover:scale-105 duration-300" : ""
-              }`}
-              key={idx}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex space-x-4">
+            <a href="Home" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Home</a>
+            <a href="#" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">About</a>
+            <a href="/About" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Services</a>
+            <a href="/Contact" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Contact</a>
+            <a href="#" className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400">SignIn</a>
+            <a href="#" className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400">Login</a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-white focus:outline-none duration-300 transition-all hover:text-gray-300"
             >
-              <a href={`#${item}`}>{item}</a>
-              <span
-                className="absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-gradient-to-r
-                             from-yellow-400 to-yellow-500 transition-all duration-300 group-hover:w-full"
-              ></span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu Toggle */}
-        <div
-          className="md:hidden cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span className="block w-8 h-1 bg-yellow-400 mb-1"></span>
-          <span className="block w-8 h-1 bg-yellow-400 mb-1"></span>
-          <span className="block w-8 h-1 bg-yellow-400"></span>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
-
-        <div className="flex ">
-        <a className="hidden md:block bg-gradient-to-r from-yellow-600 to-yellow-400 
-                py-1 px-6 mr-4 rounded-3xl shadow-2xl text-white text-sm font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105">
-          Login
-        </a>
-        <a className="hidden md:block bg-gradient-to-r from-yellow-600 to-yellow-400 
-                py-1 px-6 rounded-3xl shadow-2xl text-white text-sm font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105">
-          SignUp
-        </a>
-        </div>
-        
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          className="fixed top-[80px] duration-300 transition-transform left-1/2 translate-x-[-50%] w-[95%] md:w-auto bg-black bg-opacity-60 
-            border-t border-yellow-400 rounded-b-xl text-white flex flex-col items-center gap-4 py-4 shadow-[0px_0px_18px_3px_#f6e05e]"
-        >
-          {listItems.map((item, idx) => (
-            <a
-              href={`#${item}`}
-              key={idx}
-              className="text-lg font-semibold hover:scale-105 duration-300"
-              onClick={() => setMenuOpen(false)} // Close menu on click
-            >
-              {item}
-            </a>
-          ))}
-          <a href=""
-            className="bg-gradient-to-r from-yellow-600 to-yellow-400 
-                py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105"
-          >
-            Login
-          </a>
-          <a href=""
-            className="bg-gradient-to-r from-yellow-600 to-yellow-400 
-                py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105"
-          >
-            SignIn
-          </a>
+      {isOpen && (
+        <div className="md:hidden">
+          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Home</a>
+          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">About</a>
+          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Services</a>
+          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Contact</a>
         </div>
       )}
-    </>
+    </nav>
   );
 };
 
