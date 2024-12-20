@@ -7,7 +7,7 @@ const Text = () => {
     // Timer untuk menampilkan elemen setelah 5 detik
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 5000);
+    }, 2000);
 
     return () => clearTimeout(timer); // Membersihkan timer saat komponen di-unmount
   }, []);
@@ -23,14 +23,14 @@ const Text = () => {
       transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5 pointer-events-none'}`}
       id="gdpr"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-between  text-sm">
+      <div className="flex items-center justify-between  text-sm">
         <div className="items-center pl-4 dark:text-white">
           Are U Enjoying Our Website?
         </div>
-        <div className="content-right text-center">
+        <div className="content-right ml-2 text-center">
           <a
-            href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJvlqsBJbRZmcLHDPQWFqrfCzHdPhltDpXCShHWTZpBQmsGkrJdqwSJjppZjdFqSDZDHblB"
-            className="cursor-pointer rounded-full hover:bg-gray-700 duration-300 bg-black dark:bg-gray-600 px-4 py-2 text-white"
+            href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDtZmRldCxWLBtMBfvCQtwWdBGspQgHhqsLkwfsHQbpQxshhWhBNzcnZpNHwHCWcPxBxpZQ"
+            className="cursor-pointer mb-2 rounded-full hover:bg-gray-700 duration-300 bg-black dark:bg-gray-600 px-4 py-2 text-white"
           >
             Email Us
           </a>

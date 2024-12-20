@@ -1,32 +1,28 @@
 import React from 'react'
-import menu from '../../assets/menu.jpg'
 
 const HightlightMenu = () => {
   return (
-    <section id='Menu' className='bg-[#150000] border-2 border-white rounded-lg py-8'>
-      <div className='pb-7 grid lg:grid-cols-4 px-12 gap-8'>
-        <div className='bg-yellow-400 rounded-lg'>
-          <img src={menu} alt="" className=' px-3 py-4 '/>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>Sate Ayam</p>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>20.200</p>
-        </div>
-        <div className='bg-yellow-400 rounded-lg'>
-          <img src={menu} alt="" className=' px-3 py-4 '/>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>Sate Ayam</p>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>20.200</p>
-        </div>
-        <div className='bg-yellow-400 rounded-lg'>
-          <img src={menu} alt="" className=' px-3 py-4 '/>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>Sate Ayam</p>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>20.200</p>
-        </div>
-        <div className='bg-yellow-400 rounded-lg'>
-          <img src={menu} alt="" className=' px-3 py-4 '/>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>Sate Ayam</p>
-          <p className=' text-xl font-bold font-AnakArsitek pb-2 '>20.200</p>
-        </div>
+    <section>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+      <div className='bg-black rounded-lg border border-yellow-400'>
+    <img src="https://nibble-images.b-cdn.net/nibble/original_images/sate-ayam-enak-di-semarang-00.jpg" alt="" className='flex justify-self-center py-6 px-[2rem] rounded-3xl ' />
+    <h1 className='text-lg font-semibold font-poppins'>Sate Ayam</h1>
+    <h1 className='text-lg font-semibold font-poppins pb-6'>69.000</h1>
+    <p className='px-[2rem] pb-4'>Nikmati kelezatan sate ayam, salah satu kuliner kebanggaan Indonesia yang memadukan daging ayam empuk dengan bumbu khas.</p>
       </div>
-      <a href="" className='bg-yellow-400 px-3 py-2 text-white text-lg font-semibold font-AnakArsitek hover:bg-yellow-500 border-2 border-white  duration-300 rounded-lg '>Click For More</a>
+      <div className='bg-black rounded-lg border border-yellow-400'>
+    <img src="https://nibble-images.b-cdn.net/nibble/original_images/sate-ayam-enak-di-semarang-00.jpg" alt="" className='flex justify-self-center py-6 px-[2rem] rounded-3xl ' />
+    <h1 className='text-lg font-semibold font-poppins'>Sate Ayam</h1>
+    <h1 className='text-lg font-semibold font-poppins pb-6'>69.000</h1>
+    <p className='px-[2rem] pb-4'>Nikmati kelezatan sate ayam, salah satu kuliner kebanggaan Indonesia yang memadukan daging ayam empuk dengan bumbu khas.</p>
+      </div>
+      <div className='bg-black rounded-lg border border-yellow-400'>
+    <img src="https://nibble-images.b-cdn.net/nibble/original_images/sate-ayam-enak-di-semarang-00.jpg" alt="" className='flex justify-self-center py-6 px-[2rem] rounded-3xl ' />
+    <h1 className='text-lg font-semibold font-poppins'>Sate Ayam</h1>
+    <h1 className='text-lg font-semibold font-poppins pb-6'>69.000</h1>
+    <p className='px-[2rem] pb-4'>Nikmati kelezatan sate ayam, salah satu kuliner kebanggaan Indonesia yang memadukan daging ayam empuk dengan bumbu khas.</p>
+      </div>
+      </div>
     </section>
   )
 }

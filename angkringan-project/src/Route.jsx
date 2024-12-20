@@ -1,7 +1,9 @@
 import React from 'react'
+import App from "./App"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom"
-import App from './App'
-import ContactForm from '../src/components/ContactForm'
+
+
+
 
 const router = createBrowserRouter([
     {
@@ -14,10 +16,9 @@ const router = createBrowserRouter([
             },
             
             {
-                path: "/Contact",
-                element: <ContactForm/>,
+              path: "/menu",
+              element: <Menu/>
             },
-            
         ]
     }
 ])

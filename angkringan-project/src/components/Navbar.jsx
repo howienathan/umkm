@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,24 +31,56 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <a href="#" className="text-white text-xl font-poppins font-bold">Angkringan<span className='text-yellow-400'>Pasadena</span></a>
+            <a href="#" className="text-white text-xl font-poppins font-bold">
+              Angkringan<span className="text-yellow-400">Pasadena</span>
+            </a>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-4">
-            <a href="Home" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Home</a>
-            <a href="#" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">About</a>
-            <a href="/About" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Services</a>
-            <a href="/Contact" className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300">Contact</a>
-            <a href="#" className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400">SignIn</a>
-            <a href="#" className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400">Login</a>
+            <Link
+              href="Home"
+              className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300"
+            >
+              Home
+            </Link>
+            <Link
+              to="#"
+              className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300"
+            >
+              About
+            </Link>
+            <Link
+              to="About"
+              className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300"
+            >
+              Services
+            </Link>
+            <Link
+              to="/Contact"
+              className="text-white duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek hover:text-gray-300"
+            >
+              Contact
+            </Link>
+            <Link
+              to="#"
+              className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400"
+            >
+              SignIn
+            </Link>
+            <Link
+              to="/Login"
+              className="text-black duration-300 hover:scale-105 text-lg font-semibold font-AnakArsitek bg-yellow-500 border border-white px-1 rounded-lg hover:text-white hover:bg-yellow-400"
+            >
+              Login
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-white focus:outline-none duration-300 transition-all hover:text-gray-300"
+              className="text-white focus:outline-none duration-500 transition-all hover:text-gray-300"
             >
               <svg
                 className="w-6 h-6"
@@ -78,14 +111,36 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden">
-          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Home</a>
-          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">About</a>
-          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Services</a>
-          <a href="#" className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-semibold">Contact</a>
-        </div>
-      )}
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in bg-[#150000] ${
+          isOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <a
+          href="#"
+          className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-bold font-AnakArsitek"
+        >
+          Home
+        </a>
+        <a
+          href="#"
+          className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-bold font-AnakArsitek"
+        >
+          About
+        </a>
+        <a
+          href="#"
+          className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-bold font-AnakArsitek"
+        >
+          Services
+        </a>
+        <a
+          href="#"
+          className="block px-4 py-2 text-white hover:bg-yellow-400 duration-300 font-bold font-AnakArsitek"
+        >
+          Contact
+        </a>
+      </div>
     </nav>
   );
 };

@@ -13,7 +13,7 @@ import Text from './Hightlight/Text'
 const Hero = () => {
   return (
     <section className='text-white pt-[5rem] px-[2rem]'>
-<div id='Home' className="bg-gradient-to-b from-[#ffffff42] bg-opacity-20 bg-blend-saturation to-[#150000] text-white p-6 duration-300 rounded-xl text-start shadow-lg max-w-7xl mx-auto mt-10">
+<div id='Home' className="bg-gradient-to-b from-[#ffffff42] bg-opacity-20 bg-blend-saturation to-[#150000] text-white p-6 duration-300 rounded-xl text-start shadow-lg max-w-7xl w-full mx-auto mt-10">
       <div className="grid md:grid-cols-2 gap-6 items-center ">
         <div className="grid grid-cols-2 gap-4">
           <img
