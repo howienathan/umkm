@@ -1,37 +1,43 @@
 import React from 'react'
 
-const listItems = [
-    'WarungSigma',
-    'About',
-    'Project',
-    'Contact',
-]
+const toggleMenu = () => {
+  setIsOpen(!isOpen);
 
-const Navbar = () => {
+
+
   return (
     <>
-    <div
-     className='fixed bg-black flex justify-between items-center gap-16 py-3 px-10 left-1/2 
-                translate-x-[-50%] top-[20px] rounded-full backdrop-blur-md bg-opacity-60
-              text-white shadow-lg z-10'>
-                <ul className='flex gap-8 text-xl'>
-                    {listItems.map((item, idx) => (
-                        <li className={`relative group cursor-pointer ${idx === 0 ? "font-semibold hover:scale-105 duration-300" : ""}`} key={idx}>
-                          <a href={`#${item}`}>
-                          {item}
-                          </a>
-                            <span className='absolute left-0 bottom-[-5px] w-0 h-1 rounded-xl bg-gradient-to-r
-                             from-gray-400 to-white transition-all duration-300 group-hover:w-full '></span>
-                        </li>
-                    ))}
-                </ul>
-
-                <button className='bg-gradient-to-r from-gray-600 to-gray-400 
-                py-1 px-6 rounded-3xl shadow-2xl text-white text-lg font-semibold hover:shadow-gray-100 shadow-white duration-300 cursor-pointer hover:scale-105'
-                >
-                    Login
-                </button>
-                  </div>
+    <nav> className="bg-marquezBlack fixed w-full top-0 left-0 bg-primary z-50 duration-300 shadow-[0px_0px_70px_6px_#f7fafc] ">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center py-4">
+            <div className="text-xl font-bold font-jakarta">GreekMyth</div>
+            <div className="hidden md:flex space-x-6">
+              <a href="/" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">Home</a>
+              <a href="#" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">About</a>
+              <a href="/GodList" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">GreekMyth Explain</a>
+            </div>
+            <div className="md:hidden">
+              <button onClick={toggleMenu} className="focus:outline-none">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  {isOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <div className={`md:hidden bg-black ${isOpen ? 'block' : 'hidden'}`}>
+          <div className="px-4 py-2 space-y-2">
+            <a href="/" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">Home</a>
+            <a href="#" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">About</a>
+            <a href="/GodList" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-2 border-b-white">GreekMyth Explain</a>
+          </div>
+        </div>
+      </nav>
                   </>
   )
 }

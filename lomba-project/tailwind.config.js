@@ -6,7 +6,7 @@ export default {
       colors: {
         marquezOrange: '#FF5E00',
         marquezYellow: '#FFD700',
-        marquezBlack: '#000000',
+        marquezBlack: '#150000',
         biruTuwa: {
           100: "#d5d6e6",
           200: "#abaccd",
