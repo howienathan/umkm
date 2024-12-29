@@ -1,13 +1,16 @@
 import React from 'react'
 
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
 const toggleMenu = () => {
   setIsOpen(!isOpen);
-
+}
 
 
   return (
     <>
-    <nav> className="bg-marquezBlack fixed w-full top-0 left-0 bg-primary z-50 duration-300 shadow-[0px_0px_70px_6px_#f7fafc] ">
+    <nav className="bg-marquezBlack fixed w-full top-0 left-0 bg-primary z-50 duration-300 shadow-[0px_0px_70px_6px_#f7fafc] ">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="text-xl font-bold font-jakarta">GreekMyth</div>

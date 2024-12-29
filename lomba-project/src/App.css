@@ -57,3 +57,10 @@
   opacity: 0;
   transition: opacity 300ms;
 }
+
+body {
+  background-color: #150000;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

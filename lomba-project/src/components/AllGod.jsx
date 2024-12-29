@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Footer from './Footer'
-import cover from '../assets/Greek2.jpg'
 import Pilihan from './Pilihan';
 
 const AllGod = () => {

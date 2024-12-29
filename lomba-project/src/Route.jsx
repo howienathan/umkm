@@ -9,6 +9,10 @@ import Apollo from './components/Apollo'
 import Ares from './components/Ares'
 import Hermes from './components/Hermes'
 import Hercules from './components/Hercules'
+import Login from './components/login'
+import SignUpPage from './components/SignUpPage'
+import ProductCarousel from './components/ProductCarousel'
+import Sejarah from './components/Sejarah'
 
 
 const router = createBrowserRouter([
@@ -22,32 +26,20 @@ const router = createBrowserRouter([
             },
             
             {
-                path: "/GodList",
-                element: <AllGod/>,
+                path: "/Login",
+                element: <Login/>,
             },
             {
-                path: "/Poseidon",
-                element: <Poseidon/>,
+                path: "/SignUp",
+                element: <SignUpPage/>,
             },
             {
-                path: "/Zeus",
-                element: <Zeus/>,
+                path: "/Menu",
+                element: <ProductCarousel/>,
             },
             {
-                path: "/Apollo",
-                element: <Apollo/>,
-            },
-            {
-                path: "/Ares",
-                element: <Ares/>,
-            },
-            {
-                path: "/Hermes",
-                element: <Hermes/>,
-            },
-            {
-                path: "/Hercules",
-                element: <Hercules/>,
+                path: "/Sejarah",
+                element: <Sejarah/>,
             },
         ]
     }

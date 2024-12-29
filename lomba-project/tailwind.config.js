@@ -45,6 +45,7 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         jakarta: ["Plus Jakarta Sans", "sans-serif"],
         Lora: ["Lora", "serif"],
+        AnakArsitek: ["Architects Daughter"],
       },
       screens: {
         xs: "480px",
