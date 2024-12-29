@@ -12,7 +12,6 @@ import Hercules from './components/Hercules'
 import Login from './components/login'
 import SignUpPage from './components/SignUpPage'
 import ProductCarousel from './components/ProductCarousel'
-import Sejarah from './components/Sejarah'
 
 
 const router = createBrowserRouter([

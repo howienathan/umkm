@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Navbar from "./Navbar";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +10,7 @@ const SignUpPage = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#150000] text-white">
+      <Navbar/>
       <div className="w-full max-w-md  p-8 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold text-yellow-500 text-center mb-1">
           Sign Up
