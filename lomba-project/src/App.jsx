@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './components/HomePage';
-import Achievment from './components/Achievment';
+
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import './app.css'
@@ -13,7 +13,6 @@ const App = () => {
      <Navbar/>
 
       <HomePage />
-      <Achievment />
       <Footer />
     </section>
   );

@@ -1,17 +1,10 @@
 import React from 'react'
-import Achievment from './components/Achievment'
-import App from "./App"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom"
-import AllGod from './components/AllGod'
-import Poseidon from './components/Poseidon'
-import Zeus from './components/Zeus'
-import Apollo from './components/Apollo'
-import Ares from './components/Ares'
-import Hermes from './components/Hermes'
-import Hercules from './components/Hercules'
 import Login from './components/login'
 import SignUpPage from './components/SignUpPage'
 import ProductCarousel from './components/ProductCarousel'
+import App from './App'
+import Sejarah from './components/Sejarah'
 
 
 const router = createBrowserRouter([
@@ -40,6 +33,7 @@ const router = createBrowserRouter([
                 path: "/Sejarah",
                 element: <Sejarah/>,
             },
+            
         ]
     }
 ])

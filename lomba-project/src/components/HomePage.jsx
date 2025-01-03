@@ -1,10 +1,12 @@
 import React from 'react'
 import warung from '../assets/toko.jpg'
 import menu from '../assets/menu.jpg'
-import uang from '../assets/uang.png'
-import jempol from '../assets/jempol.png'
-import berkualitas from '../assets/berkualitas2.png'
+import uang from '../assets/money.png'
+import jempol from '../assets/fast.png'
+import berkualitas from '../assets/quality man.png'
 import minuman from '../assets/minuman.jpg'
+import Features from './Features'
+import ProductList from './ProductList'
 
 
 
@@ -55,63 +57,14 @@ const HomePage = () => {
     <h1 className='text-yellow-400 text-3xl font-poppins font-semibold'>Warung <b className='text-white font-AnakArsitek'>Anpas?</b></h1>
     <p className='text-lg pt-5 font-jakarta'>Di Warung Anpas, kami percaya bahwa makanan bukan hanya soal kenyang, tapi tentang menciptakan pengalaman yang menghubungkan orang. Setiap hidangan yang kami sajikan dipersiapkan dengan penuh cinta dan menggunakan bahan-bahan pilihan, dengan tujuan untuk memberikan rasa yang autentik dan menggugah selera. </p>
     </div>
-    <div className="grid grid-cols-1 gap-6 pt-24 px-6 sm:px-12 lg:grid-cols-3 lg:gap-12 lg:px-24">
-  
-  <div className="bg-yellow-400 relative rounded-lg shadow-lg pb-6">
-    <img
-      src={uang}
-      alt="Murah"
-      className="w-3/4 mx-auto pt-8 pb-8"
-    />
-    <div className='absolute bottom-0 '>
-    <h2 className="text-xl font-bold font-poppins text-center text-black">
-      Murah
-    </h2>
-    <p className="text-base font-medium font-poppins text-center  px-[5rem] text-black ">
-      Nongkrong lebih hemat di angkringan kami
-    </p>
-    </div>
-  </div>
-
-
-  <div className="bg-yellow-400 relative rounded-lg shadow-lg pb-6">
-    <img
-      src={jempol}
-      alt="Ramah & Cepat"
-      className="w-3/4 mx-auto pt-8 pb-8"
-    />
-    <div className='absolute bottom-0 '>
-    <h2 className="text-xl font-bold font-poppins text-center text-black">
-      Ramah & Cepat
-    </h2>
-    <p className="text-base font-medium font-poppins text-center  text-black px-[5rem]">
-      Pelayanan ramah dan cepat di angkringan kami
-    </p>
-    </div>
-  </div>
-
-
-  <div className="bg-yellow-400 rounded-lg relative shadow-lg pb-6">
-    <img
-      src={berkualitas}
-      alt="Berkualitas"
-      className="w-3/4 mx-auto pt-8 pb-8"
-    />
-    <div className='absolute bottom-0 '>
-    <h2 className="text-xl font-bold font-poppins text-center  text-black">
-      Berkualitas
-    </h2>
-    <p className="text-base font-medium font-poppins text-center  text-black px-[5rem]">
-      Menyediakan makanan dan minuman berkualitas
-    </p>
-    </div>
-  </div>
-</div>
-
+    
+    <Features/>
 
     <div className='pt-[5rem]'>
     <h1 className='text-3xl font-poppins font-semibold text-yellow-400 pb-[3rem] text-center'>Hightlight menu </h1>
+    <p>Menu ini dirancang khusus untuk memberikan Anda pengalaman terbaik dalam menjelajahi website kami. Dengan sekali klik, Anda dapat mengakses semua fitur unggulan, penawaran spesial, dan informasi penting yang kami siapkan. Kami percaya, waktu Anda sangat berhargakarena itu, semua dibuat sederhana, cepat, dan efisien. </p>
     </div>
+    <ProductList/>
     </section>
   )
 }

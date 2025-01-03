@@ -1,33 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import AutoImageSlider from './AutoImageSlider';
 import Zeus from '../assets/Zeus.jpg';
+import Navbar from './Navbar';
 
 
 const Sejarah = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Cleanup event listener
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <section className="scrollbar-hidden bg-marquezBlack w-full h-full text-white">
+    <section className="scrollbar-hidden  w-full h-full text-white">
       <Navbar/>
 
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 pt-[3rem]'>
