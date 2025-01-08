@@ -1,14 +1,10 @@
 import React from 'react'
-import Achievment from './components/Achievment'
-import App from "./App"
 import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom"
-import AllGod from './components/AllGod'
-import Poseidon from './components/Poseidon'
-import Zeus from './components/Zeus'
-import Apollo from './components/Apollo'
-import Ares from './components/Ares'
-import Hermes from './components/Hermes'
-import Hercules from './components/Hercules'
+import Login from './components/login'
+import SignUpPage from './components/SignUpPage'
+import ProductCarousel from './components/ProductCarousel'
+import App from './App'
+import Sejarah from './components/Sejarah'
 
 
 const router = createBrowserRouter([
@@ -22,33 +18,22 @@ const router = createBrowserRouter([
             },
             
             {
-                path: "/GodList",
-                element: <AllGod/>,
+                path: "/Login",
+                element: <Login/>,
             },
             {
-                path: "/Poseidon",
-                element: <Poseidon/>,
+                path: "/SignUp",
+                element: <SignUpPage/>,
             },
             {
-                path: "/Zeus",
-                element: <Zeus/>,
+                path: "/Menu",
+                element: <ProductCarousel/>,
             },
             {
-                path: "/Apollo",
-                element: <Apollo/>,
+                path: "/Sejarah",
+                element: <Sejarah/>,
             },
-            {
-                path: "/Ares",
-                element: <Ares/>,
-            },
-            {
-                path: "/Hermes",
-                element: <Hermes/>,
-            },
-            {
-                path: "/Hercules",
-                element: <Hercules/>,
-            },
+            
         ]
     }
 ])

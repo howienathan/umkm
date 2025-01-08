@@ -6,7 +6,7 @@ export default {
       colors: {
         marquezOrange: '#FF5E00',
         marquezYellow: '#FFD700',
-        marquezBlack: '#000000',
+        marquezBlack: '#150000',
         biruTuwa: {
           100: "#d5d6e6",
           200: "#abaccd",
@@ -45,6 +45,7 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         jakarta: ["Plus Jakarta Sans", "sans-serif"],
         Lora: ["Lora", "serif"],
+        AnakArsitek: ["Architects Daughter"],
       },
       screens: {
         xs: "480px",
