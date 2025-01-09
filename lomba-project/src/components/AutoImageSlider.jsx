@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import zeus from '../assets/Zeus.jpg'
-import Hercules from "../assets/Hercules.jpg";
+import zeus from '../assets/1.jpg'
+import Hercules from "../assets/2.jpg";
 
 const AutoImageSlider = () => {
   const images = [

@@ -92,7 +92,7 @@ const ProductCarousel = () => {
             className="bg-black border border-yellow-400 rounded-lg p-4  hover:shadow-lg"
           >
             <img
-              src={item.image}
+              src="https://img.kurio.network/LLKB4CCxkEN646xXdzVuaLgbk8Q=/1200x1200/filters:quality(80)/https://kurio-img.kurioapps.com/24/04/05/c86c4b68-04e1-4d66-9d85-6903003bb6a8.jpg"
               alt={item.title}
               className="w-full h-32 object-cover mb-4 rounded"
             />
