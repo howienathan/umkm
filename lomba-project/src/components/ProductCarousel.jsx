@@ -177,6 +177,14 @@ const ProductCarousel = () => {
             >
               Menu
             </a>
+            {/* {userRole === 'admin' && (
+              <button
+                onClick={() => navigate('/TambahMenu')}
+                className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-white"
+                >
+                Tambah Menu
+                </button>
+                )} */}
             <a
                 href="/Sejarah"
                 className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
@@ -223,6 +231,7 @@ const ProductCarousel = () => {
         >
           Drinks
         </button>
+        
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-[3rem] gap-6">
         {filteredItems.map((item) => (

@@ -23,6 +23,9 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
 
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
     useEffect(() => {
       const fetchUserRole = async () => {
         const user = auth.currentUser;
@@ -38,8 +41,6 @@ const Navbar = () => {
     }, []);
 
     // Cleanup event listener
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <section className="scrollbar-hidden  text-white">

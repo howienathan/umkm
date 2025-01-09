@@ -10,6 +10,7 @@ import ProductList from './components/ProductList';
 import { auth } from './firebase';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
 import './app.css'
 
 // const Navbar = ({ isLoggedIn, handleLogout }) => {
@@ -158,7 +159,6 @@ const App = () => {
         <Route path="/" element={
           <>
             <HomePage />
-            <Achievment />
             <Footer />
           </>
         } />
