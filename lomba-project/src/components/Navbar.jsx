@@ -65,13 +65,12 @@ const Navbar = () => {
               >
                 About
               </a>
-              {userRole === 'admin' && (
                 <a
                 href="/Menu"
                 className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
               >
                 Menu
-              </a> )}
+              </a> 
               <a
                 href="/Sejarah"
                 className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
@@ -129,13 +128,12 @@ const Navbar = () => {
             >
               About
             </a>
-            {userRole === 'admin' && (
               <a
               href="/Menu"
               className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold border-b-white"
             >
               Menu
-            </a> )}
+            </a> 
             <a
                 href="/Sejarah"
                 className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
