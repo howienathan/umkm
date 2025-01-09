@@ -1,5 +1,5 @@
 import React from "react";
-import uang from '../assets/money.png'
+import uang from '../assets/simboldol.png'
 import fast from '../assets/fast.png'
 import quality from '../assets/quality man.png'
 
@@ -17,7 +17,7 @@ const Features = () => {
   return (
     <div className="flex flex-col md:flex-row justify-center gap-6 p-6 ">
       <FeatureCard
-        icon={<img src={uang} alt="Icon 1" />}
+        icon={<img src={uang} alt="Icon 1" className="pb-8"/>}
         title="Murah"
         description="Nongkrong lebih hemat di angkringan kami"
       />
