@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AutoImageSlider from './AutoImageSlider';
-import Zeus from '../assets/Zeus.jpg';
+import Zeus from '../assets/menu.jpg';
 import Navbar from './Navbar';
 
 

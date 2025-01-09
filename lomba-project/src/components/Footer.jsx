@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="text-center sm:text-left">
         <h2 className="text-xl font-semibold mb-4">Contact</h2>
         <p className="flex items-center justify-center sm:justify-start text-gray-400">
-          <i className="bx bxs-envelope mr-2"></i> kaciw@gmail.com
+          <i className="bx bxs-envelope mr-2"></i> kontol@gmail.com
         </p>
         <p className="flex items-center justify-center sm:justify-start text-gray-400 mt-2">
           <i className="bx bxs-phone mr-2"></i> +62 696-696-696
