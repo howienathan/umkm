@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
-import { getUserData } from '../utils/auth';
+import { getUserData } from '../utils/Auth';
 
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);

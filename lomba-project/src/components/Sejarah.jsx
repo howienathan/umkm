@@ -5,8 +5,30 @@ import Navbar from './Navbar';
 
 
 const Sejarah = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
+    
     <section className="scrollbar-hidden  w-full h-full text-white">
       <Navbar/>
 
