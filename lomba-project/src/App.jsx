@@ -133,6 +133,7 @@ import './app.css'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const user = auth.currentUser;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

@@ -3,9 +3,10 @@ import { auth } from '../firebase';
 import { getUserData } from '../utils/Auth';
 import { useSearchParams } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({isLoggedIn, handleLogout}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
 
   const toggleMenu = () => {
@@ -33,6 +34,7 @@ const Navbar = () => {
           const result = await getUserData(user.uid);
           if (result.success) {
             setUserRole(result.data.role);
+            // setIsLoggedIn(true);
           }
         }
       };
@@ -77,13 +79,24 @@ const Navbar = () => {
               >
                 Sejarah
               </a>
-              <a
-                href="/Login"
-                className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
+              {isLoggedIn ? (
+              <>
+                <a href="/dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+                  Dashboard
+                  </a> 
+                  <button
+                  onClick={handleLogout}
+                  className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <a href="/Login" className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold">
                 Login / SignUp
               </a>
-            </div>
+            )}
+          </div>
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
                 <svg
@@ -140,15 +153,26 @@ const Navbar = () => {
               >
                 Sejarah
               </a>
-              <a
-                href="/Login"
-                className="block hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                Login / SignUp
+              {isLoggedIn ? (
+            <>
+              <a href="/dashboard" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+                Dashboard
               </a>
-          </div>
+              <button
+                onClick={handleLogout}
+                className="block w-full text-left hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <a href="/Login" className="block hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold">
+              Login / SignUp
+            </a>
+          )}
         </div>
-      </nav>
+      </div>
+    </nav>
 
  
     </section>
