@@ -165,7 +165,7 @@ const App = () => {
           </>
         } />
         <Route path="/menu" element={
-          <ProtectedRoute requiredRole="admin">
+          <ProtectedRoute requiredRole="admin"> 
             <ProductCarousel />
           </ProtectedRoute>
         }

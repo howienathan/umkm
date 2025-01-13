@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { registerUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
+import { auth, db } formimportimport { setDoc } from "firebase/firestore";
+ { createUserWithEmailAndPassword } from "firebase/auth";
+ '../firebase';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const db = getFirestore(app);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +16,52 @@ const SignUpPage = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleSignUP = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email. password);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        role:"user",
+        createdAt: new Date()
+      });```javascript
+const handleSignUP = async (e) => {
+  e.preventDefault();
+  try {
+    const { email, password } = formData;
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await setDoc(doc(db, "users", user.uid), {
+      email: user.email,
+      role: "user",
+      createdAt: new Date()
+    });
+
+    alert("User Registered")
+    navigate("/login"); // Arahkan ke halaman login setelah registrasi
+  } catch (err) {
+    setError("Something went wrong");
+  }
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+
+  try {
+    await handleSignUP(e);
+  } catch (err) {
+    setError("Registration failed");
+  } finally {
+    setLoading(false);
+  }
+};
+```
 
   const handleChange = (e) => {
     setFormData({
@@ -26,12 +76,18 @@ const SignUpPage = () => {
     setLoading(true);
 
     try {
-      const result = await registerUser(
-        formData.name,
-        formData.email,
-        formData.password
-      );
+      // const result = await registerUser(
+      //   formData.name,
+      //   formData.email,
+      //   formData.password
+      // );
       if (result.success) {
+      //   const user = auth.currentUser;
+      //   await db.collection('users').doc(user.uid).set({
+      //     name: formData.name,
+      //     email: formData.email,
+      //     role: 'user',
+      //   });
         alert("User Registered")
         navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {
