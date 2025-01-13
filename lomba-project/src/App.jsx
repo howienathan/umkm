@@ -11,6 +11,7 @@ import { auth } from './firebase';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminPage from './components/AdminPage';
 import './app.css'
 
 // const Navbar = ({ isLoggedIn, handleLogout }) => {
