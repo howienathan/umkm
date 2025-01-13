@@ -206,7 +206,7 @@ const ProductCarousel = () => {
           className={`px-4 py-2 mx-2 font-semibold rounded ${
             selectedType === "All"
               ? "bg-yellow-400 text-black"
-              : " border border-yellow-400 font-bold text-yellow-400"
+              : " border border-yellow-400 hover:bg-yellow-500 duration-300 hover:text-black font-bold text-yellow-400"
           }`}
         >
           All
@@ -216,7 +216,7 @@ const ProductCarousel = () => {
           className={`px-4 py-2 mx-2 font-semibold rounded ${
             selectedType === "Foods"
               ? "bg-yellow-400 text-black"
-              : " border border-yellow-400 font-bold text-yellow-400"
+              : " border border-yellow-400 font-bold hover:bg-yellow-500 duration-300 hover:text-black text-yellow-400"
           }`}
         >
           Foods
@@ -226,14 +226,14 @@ const ProductCarousel = () => {
           className={`px-4 py-2 mx-2 font-semibold rounded ${
             selectedType === "Drinks"
               ? "bg-yellow-400 text-black"
-              : " border border-yellow-400 font-bold text-yellow-400"
+              : " border border-yellow-400 font-bold hover:bg-yellow-500 duration-300 hover:text-black text-yellow-400"
           }`}
         >
           Drinks
         </button>
         
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-[3rem] gap-6">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 pt-[3rem] gap-6">
         {filteredItems.map((item) => (
           <div
             key={item.id}

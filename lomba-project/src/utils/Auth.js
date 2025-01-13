@@ -26,7 +26,7 @@ import {
       }
     };
     
-    // Login
+
     export const loginUser = async (email, password) => {
       try {
         await signInWithEmailAndPassword(auth, email, password);
@@ -37,7 +37,7 @@ import {
       }
     };
     
-    // Logout
+  
     export const logoutUser = async () => {
       try {
         await signOut(auth);
@@ -48,7 +48,7 @@ import {
       }
     };
     
-    // Get user data
+
     export const getUserData = async (uid) => {
       try {
         const userDoc = await getDoc(doc(db, 'users', uid));

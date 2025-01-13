@@ -18,12 +18,12 @@ const HomePage = () => {
         <div className="grid grid-cols-2 gap-4">
           <img
             src={warung}
-            alt="Angkringan Pasadena"
+            alt="Warung Anpas"
             className="rounded-lg shadow-md"
           />
           <img
             src={menu}
-            alt="Angkringan Menu"
+            alt="Warung Anpas"
             className="rounded-lg shadow-md"
           />
         </div>
@@ -39,7 +39,7 @@ const HomePage = () => {
           <p className="text-gray-300 mb-6 pb-2">
             Warung Anpas ini lebih dari sekadar tempat makan – kami menghadirkan
             hidangan lezat, harga bersahabat, cocok untuk menghabiskan waktu
-            berkualitas bersama keluarga dan teman. Angkringan kami siap
+            berkualitas bersama keluarga dan teman. warung makan kami siap
             menyambut Anda dengan suasana yang nyaman, pelayanan ramah, dan rasa
             yang tidak pernah mengecewakan.
           </p>

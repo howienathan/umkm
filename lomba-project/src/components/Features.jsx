@@ -1,6 +1,6 @@
 import React from "react";
 import uang from '../assets/simboldol.png'
-import fast from '../assets/fast.png'
+import fast from '../assets/arrow.png'
 import quality from '../assets/quality man.png'
 
 const FeatureCard = ({ icon, title, description }) => {
@@ -19,7 +19,7 @@ const Features = () => {
       <FeatureCard
         icon={<img src={uang} alt="Icon 1" className="pb-8"/>}
         title="Murah"
-        description="Nongkrong lebih hemat di angkringan kami"
+        description="Nongkrong lebih hemat di warung kami"
       />
       <FeatureCard
         icon={<img src={fast} alt="Icon 2" />}
