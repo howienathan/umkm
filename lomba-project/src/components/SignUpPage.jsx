@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { registerUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db } formimportimport { setDoc } from "firebase/firestore";
- { createUserWithEmailAndPassword } from "firebase/auth";
- '../firebase';
+import { auth } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const db = getFirestore(app);
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -17,57 +16,30 @@ const SignUpPage = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSignUP = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email. password);
-      const user = userCredential.user;
-
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        role:"user",
-        createdAt: new Date()
-      });```javascript
-const handleSignUP = async (e) => {
-  e.preventDefault();
-  try {
-    const { email, password } = formData;
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-
-    await setDoc(doc(db, "users", user.uid), {
-      email: user.email,
-      role: "user",
-      createdAt: new Date()
-    });
-
-    alert("User Registered")
-    navigate("/login"); // Arahkan ke halaman login setelah registrasi
-  } catch (err) {
-    setError("Something went wrong");
-  }
-};
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
-
-  try {
-    await handleSignUP(e);
-  } catch (err) {
-    setError("Registration failed");
-  } finally {
-    setLoading(false);
-  }
-};
-```
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
+  };
+
+  const handleSignUpPage = async (e) => {
+    e.preventDefault();
+    try {
+      const { email, password } = formData;
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, "users", user.uid), {
+        name: formData.name,
+        email: user.email,
+        role: "user",
+        created: new Date(),
+        "Signed In": new Date()
+      });
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -76,20 +48,24 @@ const handleSubmit = async (e) => {
     setLoading(true);
 
     try {
-      // const result = await registerUser(
-      //   formData.name,
-      //   formData.email,
-      //   formData.password
-      // );
+      const result = await registerUser(
+        formData.name,
+        formData.email,
+        formData.password
+      );
       if (result.success) {
-      //   const user = auth.currentUser;
-      //   await db.collection('users').doc(user.uid).set({
-      //     name: formData.name,
-      //     email: formData.email,
-      //     role: 'user',
-      //   });
+        const user = auth.currentUser;
+        const userDoc = await db.collection("users").doc(user.uid).get();
+        if (userDoc.exists()){
+          const userData = userDoc.data();
+          if (userData.role === 'admin') {
+            navigate('/dashboard');
+          } else if (userData.role === 'user') {
+            navigate('/home');
+          }
+        }
         alert("User Registered")
-        navigate("/login"); // Arahkan ke halaman login setelah registrasi
+        // navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {
         setError(result.error || "Registration failed");
       }
