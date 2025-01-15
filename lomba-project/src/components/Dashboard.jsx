@@ -33,6 +33,17 @@ const Dashboard = () => {
     }
   };
 
+  const setRole = async () => {
+    try {
+      await db.collection('users').doc(auth.currentUser.uid).update({
+        role: 'admin',
+      });
+      alert('Role berhasil diatur sebagai admin');
+    } catch (error) {
+      console.error('Error setting role:', error);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[#150000] flex items-center justify-center">

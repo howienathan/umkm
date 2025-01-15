@@ -11,6 +11,7 @@ import { auth } from './firebase';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
+// import AdminPage from './components/AdminPage';
 import './app.css'
 
 
@@ -18,6 +19,7 @@ import './app.css'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const user = auth.currentUser;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -49,7 +51,7 @@ const App = () => {
           </>
         } />
         <Route path="/menu" element={
-          <ProtectedRoute requiredRole="admin">
+          <ProtectedRoute requiredRole="admin"> 
             <ProductCarousel />
           </ProtectedRoute>
         }

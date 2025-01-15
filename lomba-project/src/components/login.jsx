@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { auth, db } from "../firebase";
 import { loginUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
+import { getFirestore } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,6 +30,27 @@ const Login = () => {
     try {
       const result = await loginUser(formData.email, formData.password);
       if (result.success) {
+        // const user = auth.currentUser;
+        // const userDoc = await db.collection("users").doc(user.uid).get();
+        // if (userDoc.exists()) {
+        //   const userData = userDoc.data();
+        //   if (userData.role === 'admin') {
+        //     navigate('/routeadmin');
+        //   } else if (userData.role === 'user') {
+        //     navigate('/routeuser');
+        //   }
+        // }
+             // Ubah role user menjadi "admin" secara manual di Firestore
+          // await db.collection('users').doc(user.uid).update({
+          //   role: 'admin',
+          // });
+        //   navigate('/routeadmin');
+        //   }
+        // } else {
+        //   await setRole(); //panggil fungsi setRole
+        //   navigate('/routeuser');
+        // if (result.success) {
+          // await handleLogin(e);
         alert("Login Successful!")
         navigate("/dashboard"); // Arahkan ke halaman dashboard setelah login
       } else {
@@ -38,6 +62,16 @@ const Login = () => {
       setLoading(false);
     }
   };
+
+  // const setRole = async () => {
+  //   try {
+  //     await db.collection('users').doc(auth.currentUser.uid).update({
+  //       role: 'user',
+  //     });
+  //   } catch (error) {
+  //     console.error('Error setting role:', error);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#150000] text-white">

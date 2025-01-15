@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { registerUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -32,6 +35,16 @@ const SignUpPage = () => {
         formData.password
       );
       if (result.success) {
+        // const user = auth.currentUser;
+        // const userDoc = await db.collection("users").doc(user.uid).get();
+        // if (userDoc.exists()){
+        //   const userData = userDoc.data();
+        //   if (userData.role === 'admin') {
+        //     navigate('/routeadmin');
+        //   } else if (userData.role === 'user') {
+        //     navigate('/routeuser');
+        //   }
+        // }
         alert("User Registered")
         navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {

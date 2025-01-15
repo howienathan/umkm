@@ -34,10 +34,10 @@ const Footer = () => {
      
       <div className="text-center sm:text-left">
         <h2 className="text-xl font-semibold mb-4">Contact</h2>
-        <a href='https://mail.google.com/mail/?view=cm&fs=1&to=jonathanaugta3@gmail.com&su=kritik%20dan%20saran&body=menurut%20saya!' className="flex items-center justify-center sm:justify-start cursor-pointer hover:text-white duration-300 text-gray-400">
-          <i className="bx bxs-envelope mr-2"></i> kaciw@gmail.com
-        </a>
-        <a href='https://wa.me/62895332011775?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Anda' className="flex items-center justify-center sm:justify-start hover:text-white duration-300 text-gray-400 mt-2">
+        <p className="flex items-center justify-center sm:justify-start text-gray-400">
+          <i className="bx bxs-envelope mr-2"></i> kontol@gmail.com
+        </p>
+        <p className="flex items-center justify-center sm:justify-start text-gray-400 mt-2">
           <i className="bx bxs-phone mr-2"></i> +62 696-696-696
         </a>
       </div>
