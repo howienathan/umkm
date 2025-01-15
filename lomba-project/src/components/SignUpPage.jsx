@@ -23,25 +23,6 @@ const SignUpPage = () => {
     });
   };
 
-  const handleSignUpPage = async (e) => {
-    e.preventDefault();
-    try {
-      const { email, password } = formData;
-      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-      const user = userCredential.user;
-
-      await setDoc(doc(db, "users", user.uid), {
-        name: formData.name,
-        email: user.email,
-        role: "user",
-        created: new Date(),
-        "Signed In": new Date()
-      });
-    } catch (err) {
-      setError(err.message || "Something went wrong");
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -54,18 +35,18 @@ const SignUpPage = () => {
         formData.password
       );
       if (result.success) {
-        const user = auth.currentUser;
-        const userDoc = await db.collection("users").doc(user.uid).get();
-        if (userDoc.exists()){
-          const userData = userDoc.data();
-          if (userData.role === 'admin') {
-            navigate('/dashboard');
-          } else if (userData.role === 'user') {
-            navigate('/home');
-          }
-        }
+        // const user = auth.currentUser;
+        // const userDoc = await db.collection("users").doc(user.uid).get();
+        // if (userDoc.exists()){
+        //   const userData = userDoc.data();
+        //   if (userData.role === 'admin') {
+        //     navigate('/routeadmin');
+        //   } else if (userData.role === 'user') {
+        //     navigate('/routeuser');
+        //   }
+        // }
         alert("User Registered")
-        // navigate("/login"); // Arahkan ke halaman login setelah registrasi
+        navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {
         setError(result.error || "Registration failed");
       }

@@ -7,7 +7,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const db = getFirestore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -23,25 +22,6 @@ const Login = () => {
     });
   };
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const { email, password } = formData;
-      const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      const user = userCredential.user;
-
-      // Anda bisa menambahkan logika untuk memperbarui data pengguna di Firestore jika diperlukan
-      // await setDoc(doc(db, "users", user.uid), {
-      //   email: user.email,
-      //   role: "user",
-      //   created: new Date(),
-      //   "Signed In": new Date()
-      // });
-    } catch (err) {
-      setError(err.message || "Something went wrong");
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -50,16 +30,16 @@ const Login = () => {
     try {
       const result = await loginUser(formData.email, formData.password);
       if (result.success) {
-        const user = auth.currentUser;
-        const userDoc = await db.collection("users").doc(user.uid).get();
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          if (userData.role === 'admin') {
-            navigate('/dashboard');
-          } else if (userData.role === 'user') {
-            navigate('/home');
-          }
-        }
+        // const user = auth.currentUser;
+        // const userDoc = await db.collection("users").doc(user.uid).get();
+        // if (userDoc.exists()) {
+        //   const userData = userDoc.data();
+        //   if (userData.role === 'admin') {
+        //     navigate('/routeadmin');
+        //   } else if (userData.role === 'user') {
+        //     navigate('/routeuser');
+        //   }
+        // }
              // Ubah role user menjadi "admin" secara manual di Firestore
           // await db.collection('users').doc(user.uid).update({
           //   role: 'admin',
@@ -70,7 +50,7 @@ const Login = () => {
         //   await setRole(); //panggil fungsi setRole
         //   navigate('/routeuser');
         // if (result.success) {
-          await handleLogin(e);
+          // await handleLogin(e);
         alert("Login Successful!")
         navigate("/dashboard"); // Arahkan ke halaman dashboard setelah login
       } else {
