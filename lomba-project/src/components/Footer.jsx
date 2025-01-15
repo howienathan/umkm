@@ -1,6 +1,7 @@
 import React from 'react'
 import toko from "../assets/logo 2.png";
 import 'boxicons/css/boxicons.min.css';
+import WhatsAppButton from './WhatsappButton';
 
 const Footer = () => {
   return (
@@ -34,11 +35,12 @@ const Footer = () => {
      
       <div className="text-center sm:text-left">
         <h2 className="text-xl font-semibold mb-4">Contact</h2>
-        <p className="flex items-center justify-center sm:justify-start text-gray-400">
-          <i className="bx bxs-envelope mr-2"></i> kontol@gmail.com
-        </p>
-        <p className="flex items-center justify-center sm:justify-start text-gray-400 mt-2">
-          <i className="bx bxs-phone mr-2"></i> +62 696-696-696
+        <a href='' className="flex items-center justify-center sm:justify-start text-gray-400">
+          <i className="bx bxs-envelope mr-2"></i> kaciw@gmail.com
+        </a>
+        <a  className="flex items-center justify-center sm:justify-start cursor-pointer hover:bg-green-500 duration-300 bg-green-400 py-2 px-2 rounded-lg text-white font-bold  mt-2">
+         
+          <i className="bx bxs-phone mr-2"></i>  <WhatsAppButton/>
         </a>
       </div>
     </div>
