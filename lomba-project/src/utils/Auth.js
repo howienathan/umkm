@@ -7,10 +7,14 @@ import {
   import { auth, db } from '../firebase';
   
     // Register
-    export const registerUser = async (name, email, password) => {
+    export const registerUser = async (name) => {
+    const [ email, setEmail ] = useState("");
+    const [ password, setPassword ] = useState("");
+
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
+        const userDoc = await getDoc(doc(db, "users", user.uidid));
         
         await setDoc(doc(db, 'users', user.uid), {
           name: name,

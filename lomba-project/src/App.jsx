@@ -46,13 +46,15 @@ const App = () => {
         <Route path="/" element={
           <>
             <HomePage />
-  
+            <ProductCarousel />
+            <Sejarah />
             <Footer />
           </>
         } />
         <Route path="/menu" element={
           <ProtectedRoute requiredRole="admin"> 
             <ProductCarousel />
+            
           </ProtectedRoute>
         }
         />
