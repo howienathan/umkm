@@ -8,8 +8,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [ email, setEmail ] = useState("");
-  const [ password, setPassword ] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -17,21 +15,22 @@ const SignUpPage = () => {
 
 const handleChange = async (e) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
+  const user = userCredential.user;
 
-        await setDoc(doc(db, "users", user.uid), 
-      {
-        email: user.email,
-        role: "user",
-        createdAt: new Date()
-      });
-      navigate("/login"); // Arahkan ke halaman login setelah registrasi
-    } catch (error) {
-      setError(error.message || "Registration failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+  await setDoc(doc(db, "users", user.uid), {
+    email: user.email,
+    role: "user",
+    createdAt: new Date(),
+  });
+
+  navigate("/login"); // Arahkan ke halaman login setelah registrasi
+//   console.log("User  Registered Succesfully!");
+// } catch (error) {
+//   setError(error.message || "Registration failed");
+// } finally {
+//   setLoading(false);
+// }
+// };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,6 +192,6 @@ const handleChange = async (e) => {
       </div>
     </div>
   );
-};
+}
 
 export default SignUpPage;
