@@ -8,6 +8,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+      name: "",
+      email: "",
+      password: "",
+    });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -24,13 +29,13 @@ const handleChange = async (e) => {
   });
 
   navigate("/login"); // Arahkan ke halaman login setelah registrasi
-//   console.log("User  Registered Succesfully!");
-// } catch (error) {
-//   setError(error.message || "Registration failed");
-// } finally {
-//   setLoading(false);
-// }
-// };
+  console.log("User  Registered Succesfully!");
+} catch (error) {
+  setError(error.message || "Registration failed");
+} finally {
+  setLoading(false);
+}
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();

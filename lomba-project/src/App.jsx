@@ -46,8 +46,6 @@ const App = () => {
         <Route path="/" element={
           <>
             <HomePage />
-            <ProductCarousel />
-            <Sejarah />
             <Footer />
           </>
         } />

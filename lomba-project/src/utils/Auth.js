@@ -19,7 +19,7 @@ import {
         await setDoc(doc(db, 'users', user.uid), {
           name: name,
           email: email,
-          role: "user",
+          role: "user", // Role default
           createdAt: new Date()
         });
     
