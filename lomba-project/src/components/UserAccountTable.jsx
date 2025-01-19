@@ -2,24 +2,24 @@ import React from "react";
 
 function UserAccountTable() {
   const userAccounts = [
-    { id: 1, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 2, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 3, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 4, name: "anjay@gmail..com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 5, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 6, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 7, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
-    { id: 8, name: "anjay@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 1, name: "gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 2, name: "gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 3, name: "gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 4, name: "gmail..com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 5, name: "croissant@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 6, name: "croissant@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 7, name: "croissant@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
+    { id: 8, name: "croissant@gmail.com", created: "Sept 69, 2069", signedIn: "Sept 69, 2069" },
   ];
 
   const handleRemove = (id) => {
     console.log("Remove user with id:", id);
-    
+    // Add logic to remove user
   };
 
   return (
-    <div className="min-h-screen  flex flex-col items-center py-10">
-      <div className="w-full max-w-4xl border border-yellow-400 bg-[#1b1b1b] text-yellow-400 rounded-lg shadow-md p-4">
+    <div className="min-h-screen bg-[#1a1a1a] flex flex-col items-center py-10 mx-[2rem]">
+      <div className="w-full max-w-4xl bg-[#1a1a1a] text-yellow-400 rounded-lg shadow-md p-4 overflow-x-auto">
         <h1 className="text-2xl font-bold mb-4 text-center">User Logged Account</h1>
         <table className="w-full text-left border-collapse border border-yellow-400">
           <thead>

@@ -156,7 +156,7 @@ const Navbar = ({isLoggedIn, handleLogout}) => {
               </a>
               {isLoggedIn ? (
             <>
-              <a href="/dashboard" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+              <a href="/Dashboard" className="block hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
                 Dashboard
               </a>
               <button

@@ -62,10 +62,10 @@ function EditProfile() {
           Change
         </button>
         <a 
-        href=""
+        href="/"
           className="w-full bg-yellow-400 text-[#1a1a1a] font-bold py-2 rounded hover:bg-yellow-500"
         >
-          Change
+          Back
         </a>
         </div>
       </form>
