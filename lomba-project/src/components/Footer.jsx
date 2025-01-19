@@ -2,6 +2,7 @@ import React from 'react'
 import toko from "../assets/logo 2.png";
 import 'boxicons/css/boxicons.min.css';
 import WhatsAppButton from './WhatsappButton';
+import GmailMessage from './GmailMessage';
 
 const Footer = () => {
   return (
@@ -10,10 +11,7 @@ const Footer = () => {
 
       <div className="text-center sm:text-left">
         <img src={toko} alt="Logo" className="mb-4 mx-auto sm:mx-0 w-20 h-20" />
-        <h1 className="text-2xl font-bold">Warung</h1>
-        <h1 className="text-yellow-400 text-3xl font-bold font-AnakArsitek">
-          Anpas
-        </h1>
+        <h1 className="text-2xl font-bold">Warung <b className='text-yellow-400 text-3xl font-bold font-AnakArsitek'>Anpas</b></h1>
         <p className="text-gray-400 mt-2">
           Menyediakan makanan yang murah dan enak
         </p>
@@ -35,8 +33,8 @@ const Footer = () => {
      
       <div className="text-center sm:text-left">
         <h2 className="text-xl font-semibold mb-4">Contact</h2>
-        <a href='' className="flex items-center justify-center sm:justify-start text-gray-400">
-          <i className="bx bxs-envelope mr-2"></i> kaciw@gmail.com
+        <a href='' className="flex items-center justify-center sm:justify-start bg-red-500 text-white py-2 px-4 duration-300 rounded-lg hover:bg-red-600 transition">
+          <i className="bx bxs-envelope mr-2"></i> <GmailMessage/>
         </a>
         <a  className="flex items-center justify-center sm:justify-start cursor-pointer hover:bg-green-500 duration-300 bg-green-400 py-2 px-2 rounded-lg text-white font-bold  mt-2">
          

@@ -79,20 +79,21 @@ const Navbar = ({isLoggedIn, handleLogout}) => {
               >
                 Sejarah
               </a>
-              {isLoggedIn ? (
-              <>
-                <a href="/dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+             
+             
+                <a href="/Dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
                   Dashboard
                   </a> 
+                  {isLoggedIn ? (
+                   <>
                   <button
-                  onClick={handleLogout}
                   className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
                 >
                   Logout
                 </button>
               </>
             ) : (
-              <a href="/Login" className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold">
+              <a href="/Login" className="hover:text-yellow-300 bg-yellow-400 px-1 rounded-lg hover:bg-[#241616] border text-[#150000] hover:scale-105 duration-300 font-jakarta font-semibold">
                 Login / SignUp
               </a>
             )}

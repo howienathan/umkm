@@ -33,6 +33,7 @@ const ProductList = () => {
         description="Nikmati kelezatan sate ayam, salah satu kuliner kebanggaan Indonesia yang memadukan daging ayam empuk dengan bumbu khas."
       />
     </div>
+    
   );
 };
 
