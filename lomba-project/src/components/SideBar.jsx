@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/logo 2.png"
 import ProductCarousel from "./ProductCarousel";
 import EditMakan from "./EditMakan";
+import UserAccountTable from "./UserAccountTable";
 
 export default function ResponsiveSidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function ResponsiveSidebar() {
           <a href="#" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Home
           </a>
-          <a href="#" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+          <a href="/EditProfile" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Edit
           </a>
           <a href="/" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
@@ -71,6 +72,7 @@ export default function ResponsiveSidebar() {
 </div>
 
          <EditMakan/>
+         <UserAccountTable/>
         </div>
         <div>
             <div className="bg-slate-900"></div>

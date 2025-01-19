@@ -6,6 +6,7 @@ import ProductCarousel from './components/ProductCarousel'
 import App from './App'
 import Sejarah from './components/Sejarah'
 import Dashboard from './components/Dashboard'
+import EditProfile from './components/EditProfile'
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: "/Dashboard",
                 element: <Dashboard/>,
+            },
+            {
+                path: "/EditProfile",
+                element: <EditProfile/>,
             },
             
         ]

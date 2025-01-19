@@ -171,7 +171,7 @@ const SignUpPage = () => {
 </button>
             </button>
           </div>
-
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
           <button
             type="submit"
             disabled={loading}
@@ -179,6 +179,13 @@ const SignUpPage = () => {
           >
             {loading ? "Loading..." : "Sign up"}
           </button>
+          <a
+            href="/"
+            className="w-full py-2 bg-yellow-500 text-black font-semibold rounded-md hover:bg-yellow-600 transition disabled:opacity-50"
+          >
+            Back
+          </a>
+          </div>
         </form>
       </div>
     </div>
