@@ -19,11 +19,16 @@ import './app.css'
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
-  const user = auth.currentUser;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user);
+      if (user) {
+        console.log("User logged in:", user);
+        setIsLoggedIn(true);
+      } else {
+        console.log("User not logged in");
+        setIsLoggedIn(false);
+      }
     });
 
     return () => unsubscribe();

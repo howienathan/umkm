@@ -43,9 +43,7 @@ const HomePage = () => {
             menyambut Anda dengan suasana yang nyaman, pelayanan ramah, dan rasa
             yang tidak pernah mengecewakan.
           </p>
-          <a href='/Menu' className="border border-yellow-500 text-yellow-400 duration-300 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
-            Lihat Menu &rarr;
-          </a>
+          
         </div>
 
       </div>
@@ -65,6 +63,11 @@ const HomePage = () => {
     <p>Menu ini dirancang khusus untuk memberikan Anda pengalaman terbaik dalam menjelajahi website kami. Dengan sekali klik, Anda dapat mengakses semua fitur unggulan, penawaran spesial, dan informasi penting yang kami siapkan. Kami percaya, waktu Anda sangat berhargakarena itu, semua dibuat sederhana, cepat, dan efisien. </p>
     </div>
     <ProductList/>
+    <div className='pt-[2rem]'>
+    <a href='/Menu' className="border border-yellow-500 text-yellow-400 duration-300 hover:text-white hover:border-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition">
+            Lihat Menu &rarr;
+          </a>
+          </div>
     </section>
   )
 }

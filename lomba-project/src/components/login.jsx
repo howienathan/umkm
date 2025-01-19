@@ -15,6 +15,19 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+    // Tambahkan useEffect untuk mengecek status autentikasi
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // Jika user sudah login, redirect ke dashboard
+          navigate("/dashboard");
+        }
+      });
+  
+      // Cleanup subscription
+      return () => unsubscribe();
+    }, [navigate]);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -172,7 +185,7 @@ const Login = () => {
 </button>
             </button>
           </div>
-
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
           <button
             type="submit"
             disabled={loading}
@@ -180,6 +193,14 @@ const Login = () => {
           >
             {loading ? "Loading..." : "Login"}
           </button>
+          <a 
+            type="submit"
+           href="/"
+            className="w-full py-2 bg-yellow-500 text-black font-semibold rounded-md hover:bg-yellow-600 transition disabled:opacity-50"
+          >
+            back
+          </a>
+          </div>
         </form>
 
         <p className="mt-4 text-center text-sm text-gray-400">
