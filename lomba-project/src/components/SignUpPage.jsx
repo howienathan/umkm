@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -21,6 +21,22 @@ const SignUpPage = () => {
       ...formData,
       [e.target.id]: e.target.value,
     });
+  };
+
+  // Fungsi untuk menyimpan data pengguna ke Firestore
+  const saveUserDataToFirestore = async (user) => {
+    try {
+      // Simpan data pengguna di koleksi "users" dengan ID dokumen = UID pengguna
+      await setDoc(doc(db, "users", user.uid), {
+        name: formData.name,
+        email: formData.email,
+        role: "user", // Role default untuk pengguna
+        createdAt: new Date(),
+      });
+      console.log("User data saved to Firestore.");
+    } catch (error) {
+      console.error("Error saving user data to Firestore: ", error);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -45,6 +61,9 @@ const SignUpPage = () => {
         //     navigate('/routeuser');
         //   }
         // }
+
+        // Simpan data pengguna ke Firestore
+        await saveUserDataToFirestore(result.user);
         alert("User Registered");
         navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {

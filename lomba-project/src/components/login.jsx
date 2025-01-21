@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { loginUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
 import { getFirestore } from "firebase/firestore";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ const Login = () => {
       [e.target.id]: e.target.value,
     });
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { getUserData } from '../utils/Auth';
 import { useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({isLoggedIn, handleLogout}) => {
+const Navbar = ()  => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,20 +30,46 @@ const Navbar = ({isLoggedIn, handleLogout}) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-    useEffect(() => {
-      const fetchUserRole = async () => {
-        const user = auth.currentUser;
-        if (user) {
-          const result = await getUserData(user.uid);
-          if (result.success) {
-            setUserRole(result.data.role);
-            // setIsLoggedIn(true);
-          }
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      setIsLoading(true);
+      const user = auth.currentUser;
+      if (user) {
+        const result = await getUserData(user.uid);
+        if (result.success) {
+          setUserRole(result.data.role); // Simpan role pengguna (misalnya "admin" atau "user")
+          setIsLoggedIn(true);
         }
-      };
+      }
+      setIsLoading(false); // Selesai memuat role
+    };
+  
+    fetchUserRole();
+  }, []);
     
-      fetchUserRole();
-    }, []);
+    //   fetchUserRole();
+    // }, []);
+
+    const handleLogout = async () => {
+      try {
+        await auth.signOut();
+        navigate('/login');
+      } catch (error) {
+        console.error('Logout error:', error);
+      }
+    };
+
+    if (isLoading) {
+      return null; // Atau tampilkan indikator loading jika diperlukan
+    }
+
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //       setIsLoggedIn(!!user); // Set true jika user ada, false jika null
+  //   });
+//     return () => unsubscribe(); // Cleanup listener
+// }, []);
+
 
     // Cleanup event listener
 
@@ -79,21 +108,21 @@ const Navbar = ({isLoggedIn, handleLogout}) => {
               >
                 Sejarah
               </a>
-             
-             
-                <a href="/Dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+              {userRole === 'admin' && (
+             <a href="/Dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
                   Dashboard
-                  </a> 
+                  </a> )}
                   {isLoggedIn ? (
                    <>
                   <button
+                  onClick={handleLogout}
                   className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
                 >
                   Logout
                 </button>
               </>
             ) : (
-              <a href="/Login" className="hover:text-yellow-300 bg-yellow-400 px-1 rounded-lg hover:bg-[#241616] border text-[#150000] hover:scale-105 duration-300 font-jakarta font-semibold">
+              <a href="/Login" className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold">
                 Login / SignUp
               </a>
             )}

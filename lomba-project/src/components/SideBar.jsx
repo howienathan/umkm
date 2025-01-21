@@ -3,9 +3,22 @@ import logo from "../assets/logo 2.png"
 import ProductCarousel from "./ProductCarousel";
 import EditMakan from "./EditMakan";
 import UserAccountTable from "./UserAccountTable";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function ResponsiveSidebar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth); // Logout dari Firebase
+      alert("Logout berhasil!");
+      window.location.href = "/"; // Redirect ke halaman login
+    } catch (error) {
+      console.error("Error during logout:", error);
+      alert("Gagal logout. Coba lagi.");
+    }
+  };
 
   return (
     <div className="flex h-screen">
@@ -39,7 +52,7 @@ export default function ResponsiveSidebar() {
             } md:opacity-100 md:visible`}
         >
             <h1 className="font-bold text-xl">Warung <b className="text-white">Anpas</b></h1>
-          <a href="#" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+          <a href="/" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Home
           </a>
           <a href="/EditProfile" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
@@ -49,10 +62,11 @@ export default function ResponsiveSidebar() {
             Back
           </a>
 
-          <a href="#" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+          <button
+            onClick={handleLogout} className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
           Logout 
 
-          </a>
+          </button>
         </nav>
       </div>
 

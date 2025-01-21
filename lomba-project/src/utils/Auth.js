@@ -13,8 +13,8 @@ import {
         const user = userCredential.user;
         
         await setDoc(doc(db, 'users', user.uid), {
-          name: name,
-          email: email,
+          name: user.name,
+          email: user.email,
           role: "user", // Role default
           createdAt: new Date()
         });
@@ -29,18 +29,30 @@ import {
     // Login
     export const loginUser = async (email, password) => {
       try {
-        await signInWithEmailAndPassword(auth, email, password);
-        return { success: true };
+        // Login dengan email dan password
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+    
+        // Mengambil data pengguna dari Firestore
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          return { success: true, data: userDoc.data() }; // Data pengguna berhasil diambil
+        } else {
+          // Jika pengguna tidak ditemukan di Firestore
+          return { success: false, error: 'User data not found in Firestore' };
+        }
       } catch (error) {
         console.error('Login error:', error);
         return { success: false, error: error.message };
       }
     };
     
+    
     // Logout
     export const logoutUser = async () => {
       try {
         await signOut(auth);
+        setIsLoggedIn(false); 
         return { success: true };
       } catch (error) {
         console.error('Logout error:', error);
