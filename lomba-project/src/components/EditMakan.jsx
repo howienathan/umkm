@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { auth, db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
 import { getUserData } from "../utils/Auth";
 import axios from "axios";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
 
 const EditMakan = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -66,16 +67,10 @@ const EditMakan = () => {
 
   // Handle Image Upload
   const uploadImage = async (imageFile) => {
-    const formData = new FormData();
-    formData.append("image", imageFile);
-    const response = await axios.post(
-      "http://localhost:5000/upload",
-      formData,
-      {
-        headers: { "Content-Type": "multipart/form-data" },
-      }
-    );
-    return response.data.filePath;
+    const storageRef = ref(storage, `menuImages/${imageFile.name}`); // Path penyimpanan di Firebase Storage
+    await uploadBytes(storageRef, imageFile); // Upload file
+    const downloadURL = await getDownloadURL(storageRef); // Dapatkan URL gambar
+    return downloadURL;
   };
 
   // Filter Items by Type
