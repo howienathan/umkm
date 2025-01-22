@@ -30,22 +30,26 @@ const Navbar = ()  => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const fetchUserRole = async () => {
-      setIsLoading(true);
-      const user = auth.currentUser;
-      if (user) {
-        const result = await getUserData(user.uid);
-        if (result.success) {
-          setUserRole(result.data.role); // Simpan role pengguna (misalnya "admin" atau "user")
-          setIsLoggedIn(true);
-        }
+// Listen to authentication state changes
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      // User is logged in, fetch user data
+      const result = await getUserData(user.uid);
+      if (result.success) {
+        setUserRole(result.data.role); // Set user role
+        setIsLoggedIn(true); // Set login status
       }
-      setIsLoading(false); // Selesai memuat role
-    };
-  
-    fetchUserRole();
-  }, []);
+    } else {
+      // User is logged out
+      setIsLoggedIn(false);
+      setUserRole(null);
+    }
+    setIsLoading(false); // Authentication check completed
+  });
+
+  return () => unsubscribe(); // Cleanup listener on component unmount
+}, []);
     
     //   fetchUserRole();
     // }, []);
@@ -53,6 +57,8 @@ const Navbar = ()  => {
     const handleLogout = async () => {
       try {
         await auth.signOut();
+        setIsLoggedIn(false);
+        setUserRole(null);
         navigate('/login');
       } catch (error) {
         console.error('Logout error:', error);

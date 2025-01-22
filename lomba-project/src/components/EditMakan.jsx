@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
 import { getUserData } from "../utils/Auth";
+import axios from "axios";
 
 const EditMakan = () => {
   const [menuItems, setMenuItems] = useState([]);

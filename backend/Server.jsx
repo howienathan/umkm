@@ -1,39 +1,40 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import express from "express";
+import multer from "multer";
+import cors from "cors";
+import path from "path";
+import fs from "fs";
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
-
-// Konfigurasi transporter Nodemailer
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'jonathanaugta3@gmail.com',
-        pass: 'semarang07'
-    }
-});
-
-// Endpoint untuk mengirim email
-app.post('/send-email', (req, res) => {
-    const { to, subject, text } = req.body;
-
-    const mailOptions = {
-        from: 'your-email@gmail.com',
-        to,
-        subject,
-        text
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send({ success: false, error });
-        }
-        res.status(200).send({ success: true, info });
-    });
-});
-
 const PORT = 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+// Middleware
+app.use(cors());
+app.use("/uploads", express.static("uploads")); // Serve static files from uploads folder
+
+// Konfigurasi multer untuk menyimpan file
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const dir = "uploads/foto_menu";
+    // Buat folder jika belum ada
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname); // Simpan dengan nama asli
+  },
+});
+
+const upload = multer({ storage });
+
+// Endpoint untuk meng-upload gambar
+app.post("/upload", upload.single("image"), (req, res) => {
+  res.json({
+    filePath: `http://localhost:${PORT}/uploads/foto_menu/${req.file.filename}`,
+  });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

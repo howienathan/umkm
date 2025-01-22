@@ -30,7 +30,7 @@ const ProductCarousel = () => {
     const fetchUserRole = async () => {
       const user = auth.currentUser ;
       if (user) {
-        const result = awaitgetUserData(user.uid); // Perbaiki pemanggilan fungsi
+        const result = await getUserData(user.uid); // Perbaiki pemanggilan fungsi
         if (result.success) {
           setUserRole(result.data.role);
         }
