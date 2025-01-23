@@ -3,8 +3,8 @@ import { auth, db, storage } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
 import { getUserData } from "../utils/Auth";
-import axios from "axios";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
+// import axios from "axios";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
 
 const EditMakan = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -34,8 +34,8 @@ const EditMakan = () => {
   const addMenuItem = async () => {
     const itemData = { ...newItem };
     if (newItem.image) {
-      const imageUrl = await uploadImage(newItem.image);
-      itemData.image = imageUrl;
+      const base64Image = await convertToBase64(newItem.image);
+      itemData.image = base64Image;
     }
     await addDoc(menuCollectionRef, itemData);
     setNewItem({ type: "", title: "", description: "", price: "", image: null });
@@ -49,8 +49,8 @@ const EditMakan = () => {
       const itemDoc = doc(db, "menuItems", editId);
       const itemData = { ...newItem };
       if (newItem.image) {
-        const imageUrl = await uploadImage(newItem.image);
-        itemData.image = imageUrl;
+        const base64Image = await convertToBase64(newItem.image);
+        itemData.image = base64Image;
       }
       await updateDoc(itemDoc, itemData);
       setEditId(null);
@@ -66,11 +66,13 @@ const EditMakan = () => {
   };
 
   // Handle Image Upload
-  const uploadImage = async (imageFile) => {
-    const storageRef = ref(storage, `menuImages/${imageFile.name}`); // Path penyimpanan di Firebase Storage
-    await uploadBytes(storageRef, imageFile); // Upload file
-    const downloadURL = await getDownloadURL(storageRef); // Dapatkan URL gambar
-    return downloadURL;
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(",")[1]); // Ambil data Base64
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file); // Baca file sebagai Base64
+    });
   };
 
   // Filter Items by Type
