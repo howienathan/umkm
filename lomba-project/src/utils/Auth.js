@@ -13,7 +13,7 @@ import {
         const user = userCredential.user;
         
         await setDoc(doc(db, 'users', user.uid), {
-          name: user.name,
+          name: name,
           email: user.email,
           role: "user", // Role default
           createdAt: new Date()

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { auth, db, storage } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
@@ -20,15 +20,19 @@ const EditMakan = () => {
   const fileInputRef = useRef(null);
   const menuCollectionRef = collection(db, "menuItems");
 
-  // Fetch Menu Items
-  const fetchMenuItems = async () => {
-    const data = await getDocs(menuCollectionRef);
-    setMenuItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
-
-  useEffect(() => {
-    fetchMenuItems();
-  }, []);
+    // Fetch Menu Items
+    const fetchMenuItems = useCallback(async () => {
+      try {
+        const data = await getDocs(menuCollectionRef);
+        setMenuItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    }, [menuCollectionRef]); // Menyertakan menuCollectionRef jika diperlukan
+  
+    useEffect(() => {
+      fetchMenuItems();
+    }, [fetchMenuItems]); 
 
   // Add Menu Item
   const addMenuItem = async () => {

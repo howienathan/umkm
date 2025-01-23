@@ -24,20 +24,20 @@ const SignUpPage = () => {
   };
 
   // Fungsi untuk menyimpan data pengguna ke Firestore
-  const saveUserDataToFirestore = async (user) => {
-    try {
-      // Simpan data pengguna di koleksi "users" dengan ID dokumen = UID pengguna
-      await setDoc(doc(db, "users", user.uid), {
-        name: formData.name,
-        email: formData.email,
-        role: "user", // Role default untuk pengguna
-        createdAt: new Date(),
-      });
-      console.log("User data saved to Firestore.");
-    } catch (error) {
-      console.error("Error saving user data to Firestore: ", error);
-    }
-  };
+  // const saveUserDataToFirestore = async (user) => {
+  //   try {
+  //     // Simpan data pengguna di koleksi "users" dengan ID dokumen = UID pengguna
+  //     await setDoc(doc(db, "users", user.uid), {
+  //       name: formData.name,
+  //       email: formData.email,
+  //       role: "user", // Role default untuk pengguna
+  //       createdAt: new Date(),
+  //     });
+  //     console.log("User data saved to Firestore.");
+  //   } catch (error) {
+  //     console.error("Error saving user data to Firestore: ", error);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +63,7 @@ const SignUpPage = () => {
         // }
 
         // Simpan data pengguna ke Firestore
-        await saveUserDataToFirestore(result.user);
+        // await saveUser DataToFirestore(userCredential.user);
         alert("User Registered");
         navigate("/login"); // Arahkan ke halaman login setelah registrasi
       } else {
