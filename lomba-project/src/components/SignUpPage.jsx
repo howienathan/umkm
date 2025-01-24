@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { registerUser } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getFirestore } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const SignUpPage = () => {
@@ -15,6 +15,10 @@ const SignUpPage = () => {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [ password, setPassword] = useState("");
+  const [ name, setName] = useState("");
+  const db = getFirestore();
 
   const handleChange = (e) => {
     setFormData({
@@ -22,6 +26,26 @@ const SignUpPage = () => {
       [e.target.id]: e.target.value,
     });
   };
+
+ const registerUser = async (e) => {
+  e.preventDefault ();
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        await setDoc(doc(db, 'users', user.uid), {
+          name: name,
+          email: user.email,
+          role: "user", // Role default
+          createdAt: new Date()
+        });
+    
+        return { success: true };
+      } catch (error) {
+        console.error('Registration error:', error);
+        return { success: false, error: error.message };
+      }
+    };
 
   // Fungsi untuk menyimpan data pengguna ke Firestore
   // const saveUserDataToFirestore = async (user) => {
@@ -92,6 +116,37 @@ const SignUpPage = () => {
           </div>
         )}
 
+        <form>
+          <input
+          type='name'
+          placeholder='name'
+          value={name} onChange={(e) => setName(e.target.value)}
+          className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <input
+          type='email'
+          placeholder='email'
+          value={email} onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <input
+          type='password'
+          placeholder='password'
+          value={password} onChange={(e) => setPassword(e.target.value)}
+          className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <button
+          type="submit"
+          disabled={loading}
+            className="w-full py-2 font-semibold text-black transition bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:opacity-50"
+            onClick={registerUser}
+            >
+            {loading ? "Loading..." : "Sign up"}
+          </button>
+        </form>
+
+        
+{/* 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="name" className="block font-medium text-yellow-500">
@@ -204,7 +259,7 @@ const SignUpPage = () => {
           >
             {loading ? "Loading..." : "Sign up"}
           </button>
-        </form>
+        </form>*/}
       </div>
     </div>
   );

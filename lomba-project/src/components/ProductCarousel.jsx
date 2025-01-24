@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { getUserData } from '../utils/Auth';
+import EditMakan from './EditMakan';
 
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,6 +127,7 @@ const ProductCarousel = () => {
               >
                 Login / SignUp
               </a>
+              
             </div>
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
@@ -245,7 +247,7 @@ const ProductCarousel = () => {
               className="w-full h-32 object-cover mb-4 rounded"
             />
             <h3 className="text-lg font-bold">{item.title}</h3>
-            <p className="text-sm text-gray-400">{item.description}</p>
+            <p className="text-sm text-gray-400">{item.description}</p> 
             <p className="mt-4 font-bold text-yellow-400">{item.price}</p>
           </div>
         ))}
