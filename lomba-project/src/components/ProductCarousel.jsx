@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { getUserData } from '../utils/Auth';
+import EditMakan from './EditMakan';
+import Navbar from './Navbar';
+
 
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,6 +129,7 @@ const ProductCarousel = () => {
               >
                 Login / SignUp
               </a>
+              
             </div>
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
