@@ -7,6 +7,7 @@ import App from './App'
 import Sejarah from './components/Sejarah'
 import Dashboard from './components/Dashboard'
 import EditProfile from './components/EditProfile'
+import Contact from './components/Contact'
 
 
 const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: "/EditProfile",
                 element: <EditProfile/>,
+            },
+            {
+                path: "/Contact",
+                element: <Contact/>,
             },
             
         ]

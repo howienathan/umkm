@@ -114,10 +114,11 @@ useEffect(() => {
               >
                 Sejarah
               </a>
-              {userRole === 'admin' && (
-             <a href="/Dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
+             
+             
+                <a href="/Dashboard" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
                   Dashboard
-                  </a> )}
+                  </a> 
                   {isLoggedIn ? (
                    <>
                   <button
