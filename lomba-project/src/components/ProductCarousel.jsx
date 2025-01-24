@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { getUserData } from '../utils/Auth';
+import Navbar from './Navbar';
 
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,38 +96,7 @@ const ProductCarousel = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="text-xl font-bold font-jakarta">Warung<b className='text-yellow-400'>Anpas</b></div>
-            <div className="hidden md:flex space-x-6">
-              <a
-                href="/"
-                className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                Home
-              </a>
-              <a
-                href="#About"
-                className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                About
-              </a>
-              <a
-                href="/Menu"
-                className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                Menu
-              </a>
-              <a
-                href="/Sejarah"
-                className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                Sejarah
-              </a>
-              <a
-                href="/Login"
-                className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
-              >
-                Login / SignUp
-              </a>
-            </div>
+            <Navbar/>
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
                 <svg
