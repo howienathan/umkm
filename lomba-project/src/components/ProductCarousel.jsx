@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedin, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null); // Perbaiki nama variabel
 
   const toggleMenu = () => {
@@ -30,18 +31,28 @@ const ProductCarousel = () => {
   }, []);
 
   useEffect(() => {
-    const fetchUserRole = async () => {
-      const user = auth.currentUser ;
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setIsLoggedIn(!!user);
       if (user) {
-        const result = await getUserData(user.uid); // Perbaiki pemanggilan fungsi
-        if (result.success) {
-          setUserRole(result.data.role);
-        }
+        getUserData(user.uid).then((result) => {
+          if (result.success) {
+            setUserRole(result.data.role);
+          }
+        });
       }
-    };
+    });
 
-    fetchUserRole();
+    return () => unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      setIsLoggedIn(false);
+    } catch (error) {
+      console.error('Error saat logout:', error);
+    }
+  };
 
   const menuItems = [
     {
@@ -123,6 +134,14 @@ const ProductCarousel = () => {
               >
                 Sejarah
               </a>
+              {isLoggedIn ? (
+                <button
+                  onClick={handleLogout}
+                  className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
+                >
+                Logout
+              </button> 
+              ) : (
               <a
                 href="/Login"
                 className="hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold"
@@ -130,7 +149,7 @@ const ProductCarousel = () => {
                 Login / SignUp
               </a>
               
-            </div>
+            </div> 
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
                 <svg
