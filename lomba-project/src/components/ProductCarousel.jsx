@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 const ProductCarousel = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLoggedin, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole, setUserRole] = useState(null); // Perbaiki nama variabel
 
   const toggleMenu = () => {
@@ -148,7 +148,7 @@ const ProductCarousel = () => {
               >
                 Login / SignUp
               </a>
-              
+              )}
             </div> 
             <div className="md:hidden">
               <button onClick={toggleMenu} className="focus:outline-none">
