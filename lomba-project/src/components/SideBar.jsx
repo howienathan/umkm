@@ -51,19 +51,19 @@ export default function ResponsiveSidebar() {
               isOpen ? "opacity-100 visible" : "opacity-0 invisible"
             } md:opacity-100 md:visible`}
         >
-            <h1 className="font-bold text-xl">Warung <b className="text-white">Anpas</b></h1>
-          <a href="/" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+            <h1 className="font-bold text-xl ">Warung <b className="text-white">Anpas</b></h1>
+          <a href="/" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Home
           </a>
-          <a href="/EditProfile" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+          <a href="/EditProfile" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Edit
           </a>
-          <a href="/" className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+          <a href="/" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
             Back
           </a>
 
           <button
-            onClick={handleLogout} className="hover:bg-[#150000] hover:text-white p-2 duration-300 rounded font-poppins pb-2 font-semibold">
+            onClick={handleLogout} className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
           Logout 
 
           </button>

@@ -105,7 +105,7 @@ const EditMakan = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-black border border-yellow-400 rounded-lg p-4 hover:shadow-lg">
+          <div key={item.id} className="bg-black border border-yellow-400 rounded-lg hover:scale-105 duration-300 p-4 hover:shadow-lg">
             <img
               src={item.image || "https://via.placeholder.com/150"}
               alt={item.title}
