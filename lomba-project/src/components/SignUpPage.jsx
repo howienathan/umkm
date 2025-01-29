@@ -89,7 +89,7 @@ const SignUpPage = () => {
         // Simpan data pengguna ke Firestore
         // await saveUser DataToFirestore(userCredential.user);
         alert("User Registered");
-        navigate("/login"); // Arahkan ke halaman login setelah registrasi
+        navigate("/Home"); // Arahkan ke halaman login setelah registrasi
       } else {
         setError(result.error || "Registration failed");
       }
