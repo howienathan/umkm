@@ -21,6 +21,19 @@ function UserAccountTable() {
     return () => unsubscribe(); // Cleanup listener saat komponen di-unmount
   }, []);
 
+
+  // // Fetch email dari API eksternal
+  // const fetchUserEmail = async () => {
+  //   try {
+  //     const response = await fetch("https://randomuser.me/api/");
+  //     const data = await response.json();
+  //     const userEmail = data.results[0].email;
+  //     setEmail(userEmail);
+  //   } catch (error) {
+  //     console.error("Error fetching email:", error);
+  //   }
+  // };
+  
   const handleRemove = async (id) => {
     try {
       await deleteDoc(doc(db, "users", id));
