@@ -67,7 +67,7 @@ const ProductCarousel = () => {
   return (
     <div className="min-h-screen text-white px-8 py-12">
       <Navbar/>
-      <div className="justify-self-center mb-8">
+      <div className="justify-self-start mb-8">
         {["All", "Foods", "Drinks"].map((type) => (
           <button
             key={type}
@@ -85,7 +85,7 @@ const ProductCarousel = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-black border border-yellow-400 rounded-lg hover:scale-105 duration-300 p-4 hover:shadow-lg">
+          <div key={item.id} className="bg-[#101010] border border-yellow-400 rounded-lg hover:scale-105 duration-300 p-4 hover:shadow-lg">
             <img
               src={item.image || "https://via.placeholder.com/150"}
               alt={item.title}
