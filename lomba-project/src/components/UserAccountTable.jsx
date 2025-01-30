@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase"; // Pastikan konfigurasi Firebase sudah benar
-import { collection, deleteDoc, doc, onSnapshot, Timestamp } from "firebase/firestore";
+import { collection, deleteDoc, doc, addDoc, addUser, onSnapshot, Timestamp } from "firebase/firestore";
 
 function UserAccountTable() {
   const [userAccounts, setUserAccounts] = useState([]);
@@ -34,14 +34,19 @@ function UserAccountTable() {
     // Bisa diarahkan ke halaman detail user atau pagination
   };
 
-  // const addUser = async () => {
-  //   try {
-  //     await addDoc(userAccountsCollection, {
-  //       email: Email,
-  //       created: new Date(),
-  //       signedIn: new Date(),
-  //     });
-
+  const addUser = async () => {
+    try {
+      await addDoc(userAccountsCollection, {
+        email: email,
+        created: new Date(),
+        signedIn: new Date(),
+      });
+      alert("User added successfully.");
+    } catch (error) {
+      console.error("Error adding user:", error);
+      alert("Failed to add user.");
+    }
+  };
   return (
     <div className="min-h-screen bg-[#1a1a1a] flex flex-col items-center py-10 mx-[2rem]">
       <div className="w-full max-w-4xl bg-[#1a1a1a] text-yellow-400 rounded-lg shadow-md p-4 overflow-x-auto">
