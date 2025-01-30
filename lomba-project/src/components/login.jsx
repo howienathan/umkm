@@ -45,7 +45,7 @@ const Login = () => {
       const result = await loginUser(formData.email, formData.password);
       if (result.success) {
         alert("Login Successful!")
-        navigate("/Home"); // Arahkan ke halaman dashboard setelah login
+        navigate("/dashboard"); // Arahkan ke halaman dashboard setelah login
       } else {
         setError(result.error || "Login failed");
       }

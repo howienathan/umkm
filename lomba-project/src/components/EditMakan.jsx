@@ -105,7 +105,7 @@ const EditMakan = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-black border border-yellow-400 rounded-lg p-4 hover:shadow-lg">
+          <div key={item.id} className="bg-black border border-yellow-400 rounded-lg hover:scale-105 duration-300 p-4 hover:shadow-lg">
             <img
               src={item.image || "https://via.placeholder.com/150"}
               alt={item.title}
@@ -136,7 +136,7 @@ const EditMakan = () => {
           />
           <input
             type="text"
-            placeholder="Title"
+            placeholder="Nama Makanan"
             value={newItem.title}
             onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
           className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -149,7 +149,7 @@ const EditMakan = () => {
           ></textarea>
           <input
             type="text"
-            placeholder="Price"
+            placeholder="Harga (sertakan titik di harga contoh '20.000')"
             value={newItem.price}
             onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
           className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
