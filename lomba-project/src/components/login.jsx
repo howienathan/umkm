@@ -15,18 +15,18 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-    // Tambahkan useEffect untuk mengecek status autentikasi
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if (user) {
-          // Jika user sudah login, redirect ke dashboard
-          navigate("/home");
-        }
-      });
+    // // Tambahkan useEffect untuk mengecek status autentikasi
+    // useEffect(() => {
+    //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //       // Jika user sudah login, redirect ke dashboard
+    //       navigate("/dashboard");
+    //     }
+    //   });
   
       // Cleanup subscription
-      return () => unsubscribe();
-    }, [navigate]);
+    //   return () => unsubscribe();
+    // }, [navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -45,7 +45,7 @@ const Login = () => {
       const result = await loginUser(formData.email, formData.password);
       if (result.success) {
         alert("Login Successful!")
-        navigate("/dashboard"); // Arahkan ke halaman dashboard setelah login
+        navigate("/"); // Arahkan ke halaman dashboard setelah login
       } else {
         setError(result.error || "Login failed");
       }

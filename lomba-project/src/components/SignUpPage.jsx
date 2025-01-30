@@ -7,57 +7,37 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
-  };
+  const registerUser = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  const registerUser = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Simpan data pengguna di Firestore
       await setDoc(doc(db, "users", user.uid), {
-        name: formData.name,
+        name: name,
         email: user.email,
         role: "user",
         createdAt: new Date(),
         signedIn: new Date(),
       });
 
-      return { success: true };
+      alert("User Registered Successfully");
+      navigate("/"); // Redirect ke halaman home setelah sukses
     } catch (error) {
       console.error("Registration error:", error);
-      return { success: false, error: error.message };
+      setError(error.message);
+    } finally {
+      setLoading(false);
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-
-    const result = await registerUser();
-
-    if (result.success) {
-      alert("User Registered");
-      navigate("/home"); // Langsung arahkan ke halaman Home
-    } else {
-      setError(result.error || "Registration failed");
-    }
-
-    setLoading(false);
   };
 
   return (
@@ -72,40 +52,37 @@ const SignUpPage = () => {
           </div>
         )}
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={registerUser}>
           <input
             type="text"
-            id="name"
             placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
             required
           />
           <input
             type="email"
-            id="email"
             placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
             required
           />
           <input
-            type="password"
-            id="password"
+            type={showPassword ? "text" : "password"}
             placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 font-semibold text-black transition bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:opacity-50"
+            className="w-full py-2 font-semibold text-black bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:opacity-50"
           >
-            {loading ? "Loading..." : "Sign Up"}
+            {loading ? "Loading..." : "Sign up"}
           </button>
         </form>
       </div>
