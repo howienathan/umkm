@@ -81,7 +81,7 @@ export default function ResponsiveSidebar() {
     Only Admin
   </h1>
   <div className="bg-slate-900 text-white rounded-full border-yellow-400 border-2 py-1 px-4 font-jakarta font-semibold text-center ">
-    atmin@gmail.com
+    admin123@gmail.com
   </div>
 </div>
 

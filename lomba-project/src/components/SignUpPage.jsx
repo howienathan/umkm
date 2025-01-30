@@ -60,7 +60,7 @@ const SignUpPage = () => {
       );
       if (result.success) {
         alert("User Registered");
-        navigate("/dashboard"); // Arahkan ke halaman login setelah registrasi
+        navigate("/home"); // Arahkan ke halaman login setelah registrasi
       } else {
         setError(result.error || "Registration failed");
       }

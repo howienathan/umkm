@@ -20,7 +20,7 @@ const Login = () => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
           // Jika user sudah login, redirect ke dashboard
-          navigate("/dashboard");
+          navigate("/home");
         }
       });
   

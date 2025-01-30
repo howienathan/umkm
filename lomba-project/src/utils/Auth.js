@@ -16,7 +16,8 @@ import {
           name: name,
           email: user.email,
           role: "user", // Role default
-          createdAt: new Date()
+          createdAt: new Date(),
+          signedIn: new Date(),
         });
     
         return { success: true };

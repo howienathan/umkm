@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase"; // Pastikan konfigurasi Firebase sudah benar
-import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, Timestamp } from "firebase/firestore";
 
 function UserAccountTable() {
   const [userAccounts, setUserAccounts] = useState([]);
+  const [user] = useState([]);
 
   const userAccountsCollection = collection(db, "users");
 
@@ -32,6 +33,14 @@ function UserAccountTable() {
     alert("View More clicked! Implement action here.");
     // Bisa diarahkan ke halaman detail user atau pagination
   };
+
+  // const addUser = async () => {
+  //   try {
+  //     await addDoc(userAccountsCollection, {
+  //       email: Email,
+  //       created: new Date(),
+  //       signedIn: new Date(),
+  //     });
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] flex flex-col items-center py-10 mx-[2rem]">
