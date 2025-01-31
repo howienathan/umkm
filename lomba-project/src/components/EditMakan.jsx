@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { db } from "../firebase";
+import { auth, db, storage } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import Navbar from "./Navbar"; // Import Navbar jika digunakan
+import { getUserData } from "../utils/Auth";
+// import axios from "axios";
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
 
 const EditMakan = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -15,45 +19,27 @@ const EditMakan = () => {
   const [selectedType, setSelectedType] = useState("All");
   const fileInputRef = useRef(null);
   const menuCollectionRef = collection(db, "menuItems");
+
+    // Fetch Menu Items
+    const fetchMenuItems = useCallback(async () => {
+      try {
+        const data = await getDocs(menuCollectionRef);
+        setMenuItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      } catch (error) {
+        console.error("Error fetching menu items:", error);
+      }
+    }, [menuCollectionRef]); // Menyertakan menuCollectionRef jika diperlukan
   
-
-  // Fetch Menu Items
-  const fetchMenuItems = useCallback(async () => {
-    try {
-      const data = await getDocs(menuCollectionRef);
-      const items = data.docs.map((doc) => {
-        const item = doc.data();
-        return {
-          ...item,
-          id: doc.id,
-          image: item.image ? URL.createObjectURL(new Blob([item.image])) : null,
-        };
-      });
-      setMenuItems(items);
-    } catch (error) {
-      console.error("Error fetching menu items:", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchMenuItems();
-  }, [fetchMenuItems]);
-
-  // Handle Image Upload (Convert to Blob)s
-  const convertToBlob = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(new Blob([reader.result], { type: file.type }));
-      reader.onerror = (error) => reject(error);
-      reader.readAsArrayBuffer(file);
-    });
-  };
+    useEffect(() => {
+      fetchMenuItems();
+    }, [fetchMenuItems]); 
 
   // Add Menu Item
   const addMenuItem = async () => {
     const itemData = { ...newItem };
     if (newItem.image) {
-      itemData.image = await convertToBlob(newItem.image);
+      const base64Image = await convertToBase64(newItem.image);
+      itemData.image = base64Image;
     }
     await addDoc(menuCollectionRef, itemData);
     setNewItem({ type: "", title: "", description: "", price: "", image: null });
@@ -67,7 +53,8 @@ const EditMakan = () => {
       const itemDoc = doc(db, "menuItems", editId);
       const itemData = { ...newItem };
       if (newItem.image) {
-        itemData.image = await convertToBlob(newItem.image);
+        const base64Image = await convertToBase64(newItem.image);
+        itemData.image = base64Image;
       }
       await updateDoc(itemDoc, itemData);
       setEditId(null);
@@ -80,6 +67,16 @@ const EditMakan = () => {
     const itemDoc = doc(db, "menuItems", id);
     await deleteDoc(itemDoc);
     fetchMenuItems();
+  };
+
+  // Handle Image Upload
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(",")[1]); // Ambil data Base64
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file); // Baca file sebagai Base64
+    });
   };
 
   // Filter Items by Type
@@ -135,27 +132,27 @@ const EditMakan = () => {
             placeholder="Type (Foods/Drinks)"
             value={newItem.type}
             onChange={(e) => setNewItem({ ...newItem, type: e.target.value })}
-            className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <input
             type="text"
             placeholder="Nama Makanan"
             value={newItem.title}
             onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-            className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <textarea
             placeholder="Description"
             value={newItem.description}
             onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-            className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           ></textarea>
           <input
             type="text"
             placeholder="Harga (sertakan titik di harga contoh '20.000')"
             value={newItem.price}
             onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-            className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <input
             type="file"

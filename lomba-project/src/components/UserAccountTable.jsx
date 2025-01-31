@@ -5,6 +5,7 @@ import { collection, deleteDoc, doc, addDoc, onSnapshot, Timestamp } from "fireb
 function UserAccountTable() {
   const [userAccounts, setUserAccounts] = useState([]);
   const [user] = useState([]);
+  const [email, setEmail] = useState(""); 
 
   const userAccountsCollection = collection(db, "users");
 
@@ -51,7 +52,7 @@ function UserAccountTable() {
     try {
       await addDoc(userAccountsCollection, {
         email: email,
-        created: new Date(),
+        createdAt: new Date(),
         signedIn: new Date(),
       });
       alert("User added successfully.");
@@ -85,7 +86,7 @@ function UserAccountTable() {
                   <td className="border border-yellow-400 p-2">{index + 1}</td>
                   <td className="border border-yellow-400 p-2">{user.email}</td>
                   <td className="border border-yellow-400 p-2">
-                    {user.created?.toDate ? user.created.toDate().toLocaleDateString() : "Unknown"}
+                    {user.createdAt?.toDate ? user.createdAt.toDate().toLocaleDateString() : "Unknown"}
                   </td>
                   <td className="border border-yellow-400 p-2">
                     {user.signedIn?.toDate ? user.signedIn.toDate().toLocaleDateString() : "Unknown"}
