@@ -11,14 +11,14 @@ const Contact = () => {
         <div className='grid grid-cols-1 lg:grid-cols-2 py-[3rem]'>
        <div className='w-full h-[30rem]'>
        <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31681.401956864764!2d110.4195174!3d-6.98862855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b41831c7b9d%3A0xcb17f1f8f9b49a67!2sRSUP%20Dr%20Kariadi%20Semarang!5e0!3m2!1sid!2sid!4v1737704597827!5m2!1sid!2sid"
-        width="100%"
-        height="100%"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.9919490842394!2d110.37136697429403!3d-7.010228968665072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708afc8c89f9c1%3A0xa39900890a3ec8b6!2sJl.%20Candi%20Prambanan%20Barat%20Raya%20No.259%2C%20Kalipancur%2C%20Kec.%20Ngaliyan%2C%20Kota%20Semarang%2C%20Jawa%20Tengah%2050183!5e0!3m2!1sid!2sid!4v1738243874371!5m2!1sid!2sid"
+        width="600"
+        height="450"
         style={{ border: 0 }}
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Google Map"
+        className="rounded-lg shadow-lg"
       ></iframe>
        </div>
        <div className='bg-[#240909] rounded-lg '>
