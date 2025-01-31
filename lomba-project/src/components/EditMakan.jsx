@@ -18,68 +18,138 @@ const EditMakan = () => {
   const [editId, setEditId] = useState(null);
   const [selectedType, setSelectedType] = useState("All");
   const fileInputRef = useRef(null);
+
+  // Referensi koleksi Firestore
   const menuCollectionRef = collection(db, "menuItems");
 
-    // Fetch Menu Items
-    const fetchMenuItems = useCallback(async () => {
-      try {
-        const data = await getDocs(menuCollectionRef);
-        setMenuItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      } catch (error) {
-        console.error("Error fetching menu items:", error);
-      }
-    }, [menuCollectionRef]); // Menyertakan menuCollectionRef jika diperlukan
-  
-    useEffect(() => {
-      fetchMenuItems();
-    }, [fetchMenuItems]); 
-
-  // Add Menu Item
-  const addMenuItem = async () => {
-    const itemData = { ...newItem };
-    if (newItem.image) {
-      const base64Image = await convertToBase64(newItem.image);
-      itemData.image = base64Image;
+  // Fetch Menu Items
+  const fetchMenuItems = useCallback(async () => {
+    try {
+      const data = await getDocs(menuCollectionRef);
+      setMenuItems(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    } catch (error) {
+      console.error("Error fetching menu items:", error);
     }
-    await addDoc(menuCollectionRef, itemData);
-    setNewItem({ type: "", title: "", description: "", price: "", image: null });
-    fileInputRef.current.value = "";
+  }, []);
+
+  useEffect(() => {
     fetchMenuItems();
-  };
+  }, [fetchMenuItems]);
 
-  // Update Menu Item
-  const updateMenuItem = async () => {
-    if (editId) {
-      const itemDoc = doc(db, "menuItems", editId);
-      const itemData = { ...newItem };
-      if (newItem.image) {
-        const base64Image = await convertToBase64(newItem.image);
-        itemData.image = base64Image;
-      }
-      await updateDoc(itemDoc, itemData);
-      setEditId(null);
-      fetchMenuItems();
-    }
-  };
-
-  // Delete Menu Item
-  const deleteMenuItem = async (id) => {
-    const itemDoc = doc(db, "menuItems", id);
-    await deleteDoc(itemDoc);
-    fetchMenuItems();
-  };
-
-  // Handle Image Upload
-  const convertToBase64 = (file) => {
+  // Fungsi untuk mengompresi gambar
+  const compressImage = async (file, maxWidth = 300, maxHeight = 300) => {
     return new Promise((resolve, reject) => {
+      const img = document.createElement("img");
       const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result.split(",")[1]); // Ambil data Base64
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file); // Baca file sebagai Base64
+
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        img.src = event.target.result;
+      };
+
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxWidth) {
+          height *= maxWidth / width;
+          width = maxWidth;
+        }
+        if (height > maxHeight) {
+          width *= maxHeight / height;
+          height = maxHeight;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(
+          (blob) => {
+            if (blob) resolve(blob);
+            else reject(new Error("Compression failed"));
+          },
+          "image/jpeg",
+          0.7 // Quality compression level (0.0 - 1.0)
+        );
+      };
+
+      img.onerror = (error) => reject(error);
     });
   };
 
-  // Filter Items by Type
+  // Fungsi untuk mengonversi gambar ke base64
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  // Fungsi menambahkan menu baru
+  const addMenuItem = async () => {
+    try {
+      const itemData = { ...newItem };
+
+      if (newItem.image) {
+        const compressedImage = await compressImage(newItem.image);
+        const base64Image = await convertToBase64(compressedImage);
+        itemData.image = base64Image;
+      }
+
+      await addDoc(menuCollectionRef, itemData);
+
+      setNewItem({ type: "", title: "", description: "", price: "", image: null });
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+
+      fetchMenuItems();
+    } catch (error) {
+      console.error("Error adding menu item:", error);
+    }
+  };
+
+  // Fungsi memperbarui menu
+  const updateMenuItem = async () => {
+    if (editId) {
+      try {
+        const itemDoc = doc(db, "menuItems", editId);
+        const itemData = { ...newItem };
+
+        if (newItem.image) {
+          const compressedImage = await compressImage(newItem.image);
+          const base64Image = await convertToBase64(compressedImage);
+          itemData.image = base64Image;
+        }
+
+        await updateDoc(itemDoc, itemData);
+        setEditId(null);
+        fetchMenuItems();
+      } catch (error) {
+        console.error("Error updating menu item:", error);
+      }
+    }
+  };
+
+  // Fungsi menghapus menu
+  const deleteMenuItem = async (id) => {
+    try {
+      const itemDoc = doc(db, "menuItems", id);
+      await deleteDoc(itemDoc);
+      fetchMenuItems();
+    } catch (error) {
+      console.error("Error deleting menu item:", error);
+    }
+  };
+
+  // Filter berdasarkan tipe makanan
   const filteredItems =
     selectedType === "All"
       ? menuItems
