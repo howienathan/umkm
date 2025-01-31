@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { getUserData } from "../utils/Auth";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo1.png"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center py-4">
             <div className="text-xl font-bold font-jakarta">
-              Warung<b className="text-yellow-400">Anpas</b>
+             <img src={logo} alt="" className="w-32 h-14"/>
             </div>
             <div className="hidden md:flex space-x-6">
               <a href="/" className="hover:text-gray-300 hover:scale-105 duration-300 font-jakarta font-semibold">
@@ -138,7 +139,7 @@ const Navbar = () => {
                 Logout
               </button>
             ) : (
-              <a href="/Login" className="block hover:text-yellow-300 text-yellow-400 hover:scale-105 duration-300 font-jakarta font-semibold">
+              <a href="/Login" className="block hover:text-yellow-300 bg-yellow-400 text-black hover:scale-105 duration-300 font-jakarta font-semibold">
                 Login / SignUp
               </a>
             )}

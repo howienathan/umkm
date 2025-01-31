@@ -132,27 +132,27 @@ const EditMakan = () => {
             placeholder="Type (Foods/Drinks)"
             value={newItem.type}
             onChange={(e) => setNewItem({ ...newItem, type: e.target.value })}
-          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#150000] border border-yellow-400 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <input
             type="text"
             placeholder="Nama Makanan"
             value={newItem.title}
             onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#150000] border border-yellow-400 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <textarea
             placeholder="Description"
             value={newItem.description}
             onChange={(e) => setNewItem({ ...newItem, description: e.target.value })}
-          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#150000] border border-yellow-400 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           ></textarea>
           <input
             type="text"
             placeholder="Harga (sertakan titik di harga contoh '20.000')"
             value={newItem.price}
             onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-          className="w-full p-2 mb-4 rounded bg-[#2a2a2a] text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="w-full p-2 mb-4 rounded bg-[#150000] border border-yellow-400 text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           />
           <input
             type="file"

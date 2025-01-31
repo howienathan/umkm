@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AutoImageSlider from './AutoImageSlider';
 import Zeus from '../assets/menu.jpg';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 
 const Sejarah = () => {
@@ -43,9 +44,10 @@ const Sejarah = () => {
             <img src={Zeus} alt="" className='' />
         </div>
         <div className='pt-5'>
-            <p className='font-Lora text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et ratione, incidunt eius eligendi aliquid temporibus adipisci vel ullam modi ducimus?</p>
+            <p className='font-Lora text-xl'>Lorem ipsum odor amet, consectetuer adipiscing elit. Litora ligula in donec velit platea luctus id rutrum. Neque iaculis magna diam adipiscing; sed egestas est taciti aptent. Taciti arcu dignissim magna tincidunt facilisi est tellus adipiscing. Himenaeos suspendisse leo turpis vitae integer nam viverra posuere. Nullam euismod potenti volutpat suspendisse sodales, dictumst mollis metus. Himenaeos interdum ac donec ridiculus, maximus inceptos. Venenatis dictum non eros primis sodales elementum eu. Netus est etiam sit lectus mollis dictumst ut hac.
+            </p>
         </div>
-    
+    <Footer/>
     </section>
   );
 };

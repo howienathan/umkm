@@ -63,8 +63,8 @@ function UserAccountTable() {
   };
   
   return (
-    <div className="min-h-screen bg-[#1a1a1a] flex flex-col items-center py-10 mx-[2rem]">
-      <div className="w-full max-w-4xl bg-[#1a1a1a] text-yellow-400 rounded-lg shadow-md p-4 overflow-x-auto">
+    <div className="min-h-screen  flex flex-col items-center py-10 mx-[2rem]">
+      <div className="w-full max-w-4xl bg-[#101010] border border-yellow-400 text-yellow-400 rounded-lg shadow-md p-8 overflow-x-auto">
         <h1 className="text-2xl font-bold mb-4 text-center">User Logged Accounts</h1>
 
         {userAccounts.length === 0 ? (
