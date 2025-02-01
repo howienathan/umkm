@@ -53,18 +53,15 @@ export default function ResponsiveSidebar() {
         >
             <h1 className="font-bold text-xl ">Warung <b className="text-white">Anpas</b></h1>
           <a href="/" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
-            Home
-          </a>
-          <a href="/EditProfile" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
-            Edit
+          <i className='bx bxs-home pr-3'></i>Home 
           </a>
           <a href="/" className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
-            Back
+          <i className='bx bx-arrow-back pr-2' ></i> Back
           </a>
 
           <button
             onClick={handleLogout} className="hover:bg-[#150000] text-white hover:text-yellow-400 p-2 duration-300 rounded font-poppins pb-2 font-semibold">
-          Logout 
+          <i className='bx bxs-door-open pr-3' ></i> Logout 
 
           </button>
         </nav>
