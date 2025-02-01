@@ -3,6 +3,7 @@ import { auth, db, storage } from "../firebase";
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
 import { getUserData } from "../utils/Auth";
+import Footer from "./Footer";
 // import axios from "axios";
 // import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
 
@@ -83,7 +84,7 @@ const ProductCarousel = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pb-[5rem]">
         {filteredItems.map((item) => (
           <div key={item.id} className="bg-[#101010] border border-yellow-400 rounded-lg hover:scale-105 duration-300 p-4 hover:shadow-lg">
             <img
@@ -98,6 +99,7 @@ const ProductCarousel = () => {
           </div>
         ))}
       </div>
+        <Footer/>
 
       
     </div>

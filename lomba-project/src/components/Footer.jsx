@@ -1,5 +1,5 @@
 import React from 'react'
-import toko from "../assets/logo 2.png";
+import toko from "../assets/logoo.png";
 import 'boxicons/css/boxicons.min.css';
 import WhatsAppButton from './WhatsappButton';
 import GmailMessage from './GmailMessage';
@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">
 
       <div className="text-center sm:text-left">
-        <img src={toko} alt="Logo" className="mb-4 mx-auto sm:mx-0 w-20 h-20" />
+        <img src={toko} alt="Logo" className="mb-4 mx-auto sm:mx-0 w-40 h-20" />
         <h1 className="text-2xl font-bold">Warung <b className='text-yellow-400 text-3xl font-bold font-AnakArsitek'>Anpas</b></h1>
         <p className="text-gray-400 mt-2">
           Menyediakan makanan yang murah dan enak
@@ -21,10 +21,10 @@ const Footer = () => {
       <div className="text-center">
         <h2 className="text-xl font-semibold mb-4">Follow Us</h2>
         <div className="flex justify-center space-x-4">
-        <a href="https://www.tiktok.com/@nathanwleowle" target="_blank" rel="noopener noreferrer" className='hover:scale-105 bg-white rounded-md duration-300'>
+        <a href="https://www.tiktok.com/@warungmakananpas.smg?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" className='hover:scale-105 bg-white rounded-md duration-300'>
         <img src="https://img.icons8.com/?size=30&id=118638&format=png&color=000000" />
     </a>
-    <a href="https://www.instagram.com/nathansigmaskibidi/" target="_blank" rel="noopener noreferrer" className='hover:scale-105 bg-white rounded-md duration-300'>
+    <a href="https://www.instagram.com/warungmakananpas.smg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className='hover:scale-105 bg-white rounded-md duration-300'>
         <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
     </a>
         </div>

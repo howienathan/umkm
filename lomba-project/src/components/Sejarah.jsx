@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AutoImageSlider from './AutoImageSlider';
-import Zeus from '../assets/menu.jpg';
+import Zeus from '../assets/own1.jpg';
+import anjay from '../assets/tem1.jpg';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -33,18 +34,21 @@ const Sejarah = () => {
     <section className="scrollbar-hidden  w-full h-full text-white">
       <Navbar/>
 
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 pt-[3rem]'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 py-[5rem]'>
             <AutoImageSlider/>
             <div>
                 <h1 className='text-4xl font-Lora text-yellow-400 font-semibold'>Sejarah</h1>
-                <p className='pt-5 '>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, corrupti numquam saepe blanditiis enim cum, dolor culpa tenetur velit atque, quam voluptatibus. Fugiat suscipit architecto repellat ea quod molestiae at modi error cumque quos dolor, autem asperiores excepturi quaerat velit. Alias fuga eligendi beatae id ratione vel facere, quae magni?</p>
+                <p className='pt-5 '>Warung kami telah beroperasi sejak tahun 2022 dan terus berkomitmen untuk memberikan pelayanan terbaik kepada setiap pengunjung. Kami selalu mengutamakan kualitas, baik dalam hal makanan, minuman, maupun suasana yang kami ciptakan. Dengan lingkungan yang bersih, nyaman, dan penuh kehangatan, kami berharap setiap pelanggan yang datang dapat merasa aman, santai, serta betah untuk menikmati waktu di warung kami. Kepuasan pelanggan adalah prioritas utama kami, dan kami akan terus berinovasi serta meningkatkan pelayanan demi memberikan pengalaman terbaik bagi setiap pengunjung.</p>
             </div>
         </div>
-        <div className='pt-[3rem] flex justify-center'>
-            <img src={Zeus} alt="" className='' />
+        <div className='py-[3rem]  justify-center grid grid-cols-2 gap-3'>
+            <img src={Zeus} alt="" className='rounded-md' />
+            <img src={anjay} alt="" className='rounded-md' />
         </div>
         <div className='pt-5'>
-            <p className='font-Lora text-xl'>Lorem ipsum odor amet, consectetuer adipiscing elit. Litora ligula in donec velit platea luctus id rutrum. Neque iaculis magna diam adipiscing; sed egestas est taciti aptent. Taciti arcu dignissim magna tincidunt facilisi est tellus adipiscing. Himenaeos suspendisse leo turpis vitae integer nam viverra posuere. Nullam euismod potenti volutpat suspendisse sodales, dictumst mollis metus. Himenaeos interdum ac donec ridiculus, maximus inceptos. Venenatis dictum non eros primis sodales elementum eu. Netus est etiam sit lectus mollis dictumst ut hac.
+            <p className='font-Lora text-xl'>Dalam satu frame gambar ini, tergambar sinergi antara Owner dan Kolaborator yang bekerja sama untuk menciptakan sesuatu yang luar biasa. Owner, sebagai pemilik dan penggerak utama, membawa visi, strategi, dan semangat dalam membangun usaha. Sementara itu, Kolaborator berperan sebagai mitra yang turut memberikan ide, kreativitas, serta kontribusi nyata dalam menjalankan dan mengembangkan bisnis.
+
+Kebersamaan mereka mencerminkan kerja sama yang harmonis, di mana setiap pihak saling melengkapi dan berbagi peran demi mencapai tujuan bersama. Dengan komunikasi yang baik dan semangat gotong royong, mereka menciptakan lingkungan kerja yang produktif, inovatif, dan penuh inspirasi.
             </p>
         </div>
     <Footer/>

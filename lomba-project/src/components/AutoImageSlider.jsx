@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import sejarah1 from '../assets/1.jpg'
-import sejarah2 from "../assets/2.jpg";
+import sejarah2 from "../assets/sej1.jpg";
 
 const AutoImageSlider = () => {
   const images = [

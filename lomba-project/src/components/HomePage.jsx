@@ -1,6 +1,6 @@
 import React from 'react'
-import warung from '../assets/toko.jpg'
-import menu from '../assets/menu.jpg'
+import warung from '../assets/aw1.jpg'
+import menu from '../assets/aw2.jpg'
 import uang from '../assets/money.png'
 import jempol from '../assets/fast.png'
 import berkualitas from '../assets/quality man.png'
@@ -19,7 +19,7 @@ const HomePage = () => {
           <img
             src={warung}
             alt="Warung Anpas"
-            className="rounded-lg shadow-md"
+            className="rounded-lg shadow-md "
           />
           <img
             src={menu}
