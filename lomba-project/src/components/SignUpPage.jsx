@@ -58,7 +58,7 @@ const SignUpPage = () => {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
+            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
             required
           />
           <input
@@ -66,7 +66,7 @@ const SignUpPage = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
+            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
             required
           />
           <input
@@ -74,13 +74,13 @@ const SignUpPage = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 mt-1 bg-transparent border border-gray-600 rounded-md"
+            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 font-semibold text-black bg-yellow-500 rounded-md hover:bg-yellow-600 disabled:opacity-50"
+            className="w-full py-2 font-semibold text-black bg-yellow-500 rounded-md duration-300 hover:bg-yellow-600 disabled:opacity-50"
           >
             {loading ? "Loading..." : "Sign up"}
           </button>
