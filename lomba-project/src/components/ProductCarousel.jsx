@@ -65,7 +65,7 @@ const ProductCarousel = () => {
       : menuItems.filter((item) => item.type === selectedType);
 
   return (
-    <div className="min-h-screen text-white px-8 py-12">
+    <div className="min-h-screen text-white px-8 py-16">
       <Navbar/>
       <div className="justify-self-start mb-8">
         {["All", "Foods", "Drinks"].map((type) => (

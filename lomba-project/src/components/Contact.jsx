@@ -25,10 +25,10 @@ const Contact = () => {
         <div className='mx-[2rem]'>
         <h1 className='font-semibold text-white text-xl font-jakarta pt-[1rem]'>Keterangan</h1>
         <p className='font-semibold text-white text-base font-jakarta pt-[1rem]'>kami memiliki tempat yang cukup strategis dikarenakan banyak nya orang yang berlewatan kesana kemari melewati warung kami dan besar kemungkinan jika mereka kelaparan akan ke warung kami</p>
-        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3rem]'>Senin</span> jam 13.00 - 21.30</p>
+        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3.5rem]'>Senin</span> jam 13.00 - 21.30</p>
         <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3rem]'>Selasa</span> jam 13.00 - 21.30</p>
-        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3rem]'>Rabu</span > jam 13.00 - 21.30</p>
-        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3rem]'>Kamis</span> jam 13.00 - 21.30</p>
+        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[58px]'>Rabu</span > jam 13.00 - 21.30</p>
+        <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[55px]'>Kamis</span> jam 13.00 - 21.30</p>
         <p className='font-semibold text-white text-base font-jakarta pt-[1rem] text-left'><span className='pr-[3rem]'>Jumat</span> jam 13.00 - 21.30</p>
 
         <div className="text-center sm:text-left pt-[1rem]">
