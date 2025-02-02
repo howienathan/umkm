@@ -16,7 +16,7 @@ const ProductCard = ({ image, title, price, description }) => {
 
 const ProductList = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-center gap-6 p-6 ">
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 justify-center gap-6 p-6 ">
       <ProductCard
         image={lauk}
         title="Nasi Telur Orek"
