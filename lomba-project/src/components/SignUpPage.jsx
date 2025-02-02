@@ -53,35 +53,52 @@ const SignUpPage = () => {
         )}
 
         <form onSubmit={registerUser}>
+        <div className="mb-4">
+            <label htmlFor="name" className="block text-yellow-500 font-medium">
+              Name
+            </label>
           <input
             type="text"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
-            required
+            className="w-full mt-1 p-2 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
           />
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-yellow-500 font-medium">
+              Email
+            </label>
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
-            required
+            className="w-full mt-1 p-2 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
           />
+          </div>
+
+          <div className="mb-6 relative">
+            <label htmlFor="password" className="block text-yellow-500 font-medium">
+              Password
+            </label>
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 my-3 bg-transparent border border-yellow-400 rounded-md"
-            required
+            className="w-full mt-1 p-2 bg-transparent border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              required
           />
+          </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 font-semibold text-black bg-yellow-500 rounded-md duration-300 hover:bg-yellow-600 disabled:opacity-50"
-          >
+            className="w-full py-2 bg-yellow-500 text-black font-semibold rounded-md hover:bg-yellow-600 transition disabled:opacity-50">
             {loading ? "Loading..." : "Sign up"}
           </button>
         </form>
