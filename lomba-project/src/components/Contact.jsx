@@ -11,7 +11,7 @@ const Contact = () => {
         <div className='grid grid-cols-1  py-[5rem]'>
        <div className='w-full h-[30rem]'>
        <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.9919490842394!2d110.37136697429403!3d-7.010228968665072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708afc8c89f9c1%3A0xa39900890a3ec8b6!2sJl.%20Candi%20Prambanan%20Barat%20Raya%20No.259%2C%20Kalipancur%2C%20Kec.%20Ngaliyan%2C%20Kota%20Semarang%2C%20Jawa%20Tengah%2050183!5e0!3m2!1sid!2sid!4v1738243874371!5m2!1sid!2sid"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15840.020041964865!2d110.35499283251787!3d-7.008691942086109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708afcba9e5bbb%3A0xbef22d8161c3e672!2sJl.%20Candi%20Prambanan%20Raya%20No.259%2C%20RT.3%2FRW.4%2C%20Kalipancur%2C%20Kec.%20Ngaliyan%2C%20Kota%20Semarang%2C%20Jawa%20Tengah%2050183!5e0!3m2!1sid!2sid!4v1738562669900!5m2!1sid!2sid"
         width="100%"
         height="100%"
         style={{ border: 0 }}
