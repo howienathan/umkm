@@ -103,12 +103,7 @@ function UserAccountTable() {
         )}
 
         <div className="text-center mt-4">
-          <button
-            onClick={handleViewMore}
-            className="bg-yellow-400 text-[#1a1a1a] font-bold py-2 px-6 rounded hover:bg-yellow-500"
-          >
-            View More
-          </button>
+         
         </div>
       </div>
     </div>

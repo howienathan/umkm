@@ -1,27 +1,19 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { auth, db, storage } from "../firebase";
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { useState, useEffect,  useCallback } from "react";
+import {  db  } from "../firebase";
+import { collection, getDocs,  } from "firebase/firestore";
 import Navbar from "./Navbar"; // Import Navbar jika digunakan
-import { getUserData } from "../utils/Auth";
+
 import Footer from "./Footer";
-// import axios from "axios";
-// import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Storage API
+
 
 const ProductCarousel = () => {
   const [menuItems, setMenuItems] = useState([]);
-  const [newItem, setNewItem] = useState({
-    type: "",
-    title: "",
-    description: "",
-    price: "",
-    image: null,
-  });
-  const [editId, setEditId] = useState(null);
+
   const [selectedType, setSelectedType] = useState("All");
-  const fileInputRef = useRef(null);
+
   const menuCollectionRef = collection(db, "menuItems");
 
-    // Fetch Menu Items
+   
     const fetchMenuItems = useCallback(async () => {
       try {
         const data = await getDocs(menuCollectionRef);
@@ -29,37 +21,18 @@ const ProductCarousel = () => {
       } catch (error) {
         console.error("Error fetching menu items:", error);
       }
-    }, [menuCollectionRef]); // Menyertakan menuCollectionRef jika diperlukan
+    }, [menuCollectionRef]); 
   
     useEffect(() => {
       fetchMenuItems();
     }, [fetchMenuItems]); 
 
-  // Add Menu Item
-  const addMenuItem = async () => {
-    const itemData = { ...newItem };
-    if (newItem.image) {
-      const base64Image = await convertToBase64(newItem.image);
-      itemData.image = base64Image;
-    }
-    await addDoc(menuCollectionRef, itemData);
-    setNewItem({ type: "", title: "", description: "", price: "", image: null });
-    fileInputRef.current.value = "";
-    fetchMenuItems();
-  };
 
 
-  // Handle Image Upload
-  const convertToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result.split(",")[1]); // Ambil data Base64
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(file); // Baca file sebagai Base64
-    });
-  };
 
-  // Filter Items by Type
+  
+
+  
   const filteredItems =
     selectedType === "All"
       ? menuItems

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import ProductCarousel from './components/ProductCarousel';
@@ -6,7 +6,6 @@ import Sejarah from './components/Sejarah';
 import Login from './components/login';
 import SignUpPage from './components/SignUpPage';
 import Dashboard from './components/Dashboard';
-import ProductList from './components/ProductList';
 import { auth } from './firebase';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
