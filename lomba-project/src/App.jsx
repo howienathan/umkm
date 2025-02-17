@@ -6,11 +6,10 @@ import Sejarah from './components/Sejarah';
 import Login from './components/login';
 import SignUpPage from './components/SignUpPage';
 import Dashboard from './components/Dashboard';
-import { auth } from '../firebase';
+import { auth } from './firebase';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
-// import AdminPage from './components/AdminPage';
 import './app.css'
 
 
@@ -65,7 +64,6 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/menu" element={<ProductCarousel />} />
         <Route path="/sejarah" element={<Sejarah />} />
-        {/* Add other routes as needed */}
       </Routes>
     </div>
   );
